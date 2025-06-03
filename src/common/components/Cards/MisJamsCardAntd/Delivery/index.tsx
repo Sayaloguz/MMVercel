@@ -77,7 +77,7 @@ const MisJamCardAntd: FC<MisJamCardAntdProps> = ({ jam, onActionComplete }) => {
 
         {/* Cuerpo card */}
         <div className="bg-white p-4 space-y-2">
-          <div className="flex items-center justify-start gap-4 text-sm text-gray-600 font-medium mb-1">
+          <div className="flex items-center justify-start gap-4 text-sm text-gray-600 font-medium mb-1 flex-wrap">
             {!isOwner && (
               <div className="flex items-center gap-3">
                 <Link href={`/perfil/${createdBy.steamId}`}>
@@ -89,20 +89,20 @@ const MisJamCardAntd: FC<MisJamCardAntdProps> = ({ jam, onActionComplete }) => {
               </div>
             )}
 
-            <div className="flex items-center gap-1 font-bold">
-              <CalendarOutlined className="text-[14px]" />
-              <span>{dayjs(jam.jamDate).format("DD/MM/YYYY")}</span>
-            </div>
-            <div className="flex items-center gap-1 font-bold">
-              <ClockCircleOutlined className="text-[14px]" />
-              <span>{jam.jamTime}</span>
+            <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4">
+              <div className="flex items-center gap-1 font-bold">
+                <CalendarOutlined className="text-[14px]" />
+                <span>{dayjs(jam.jamDate).format("DD/MM/YYYY")}</span>
+              </div>
+              <div className="flex items-center gap-1 font-bold">
+                <ClockCircleOutlined className="text-[14px]" />
+                <span>{jam.jamTime}</span>
+              </div>
             </div>
           </div>
           <div className="border-b border-gray-300 my-2" />
 
-          <h3 className="font-bold">
-            {isOwner ? "Tu descripción" : "Descripción"}
-          </h3>
+          <h3 className="font-bold">{jam.title}</h3>
           <p className="text-gray-600">{description}</p>
           <div className="border-b border-gray-300 my-2" />
 
@@ -113,19 +113,23 @@ const MisJamCardAntd: FC<MisJamCardAntdProps> = ({ jam, onActionComplete }) => {
                 <Button
                   icon={<SettingOutlined />}
                   onClick={() => setIsEditModalVisible(true)}
-                />
+                >
+                  <span className="hidden md:inline">Editar Jam</span>
+                </Button>
                 <Button
                   danger
                   icon={<DeleteOutlined />}
                   onClick={() => setIsConfirmDeleteVisible(true)}
-                />
+                >
+                  <span className="hidden md:inline">Eliminar Jam</span>
+                </Button>
+
                 <Button
                   icon={<UserGroupIcon className="text-xl" />}
                   onClick={() => setIsPlayersModalVisible(true)}
                 >
-                  <span className="ml-1">
-                    {players?.length || 0}/{maxPlayers}
-                  </span>
+                  <span className="hidden md:inline"> Participantes</span> (
+                  {players?.length || 0}/{maxPlayers})
                 </Button>
               </>
             ) : (

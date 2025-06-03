@@ -4,7 +4,7 @@ import { DeleteOutlined, SettingOutlined } from "@ant-design/icons";
 import { UserGroupIcon } from "@/common/components/CustomIcons";
 import { JamCardActionsProps } from "./interface";
 
-const JamCardActions: React.FC<JamCardActionsProps> = ({
+const JamCardActions: FC<JamCardActionsProps> = ({
   isOwner,
   onEdit,
   onDelete,
