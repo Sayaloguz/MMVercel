@@ -19,11 +19,13 @@ export default function MisJamsPage() {
         theme="colored"
       />
       <h1 className="text-4xl font-bold flex justify-center items-center gap-2">
-        <FolderOpenOutlined className="relative -top-[2px] mr-2" />
+        <FolderOpenOutlined className="shadowed relative -top-[2px] mr-2" />
         Mis Jams
-        <FolderOpenOutlined className="relative -top-[2px] ml-2" />
+        <FolderOpenOutlined className="shadowed relative -top-[2px] ml-2" />
       </h1>
-      <p>Explora las Jams a las que te has unido o que has creado.</p>
+      <p className="font-bold">
+        Explora las Jams a las que te has unido o que has creado.
+      </p>
       <div className="min-h-screen flex items-center justify-center px-4 my-6">
         <div className="container max-w-3xl bg-slate-800/70 p-10 rounded-lg shadow-md">
           <MisJamTabs />

@@ -39,11 +39,11 @@ const UserNavAvatar: FC<UserNavAvatarProps> = ({ user }) => {
             alt="avatar"
             width={46}
             height={46}
-            className="rounded-full border-2 border-white group-hover:border-red-400 transition"
+            className="shadowed-element rounded-full border-2 border-white group-hover:border-red-400 transition"
             preview={false}
           />
           <p
-            className="text-white group-hover:text-red-400 transition max-w-[130px] truncate"
+            className="shadowed-text text-white group-hover:text-red-400 transition max-w-[130px] truncate"
             title={user.name}
           >
             {user.name}

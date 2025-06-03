@@ -3,17 +3,17 @@
 import React, { FC } from "react";
 import { Spin, Typography } from "antd";
 import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useAuth } from "@/common/hooks/useAuth";
+import { useOpenJams } from "@/common/hooks/useOpenJams";
 import GeneralJamCard from "../../GeneralJamCardAntd/Delivery";
 import { Jam, User } from "@/common/types/utility";
-import "react-toastify/dist/ReactToastify.css";
-import useFilteredJams from "@/common/hooks/useFIlteredJams";
 
 const { Text } = Typography;
 
 const GeneralJamList: FC = () => {
   const { user: currentUser, loading: authLoading } = useAuth();
-  const { jams, loading, error, setJams } = useFilteredJams();
+  const { jams, loading: jamsLoading, error, setJams } = useOpenJams();
 
   const jwtValid = !!currentUser;
 
@@ -37,13 +37,16 @@ const GeneralJamList: FC = () => {
       const endpoint = userIsInJam
         ? `removePlayer/${currentUser.steamId}`
         : "addPlayer";
+
       const method = userIsInJam ? "DELETE" : "POST";
       const url = `http://localhost:8080/jams/${jam.id}/${endpoint}`;
 
       const res = await fetch(url, {
         method,
         credentials: "include",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: !userIsInJam ? JSON.stringify(currentUser) : undefined,
       });
 
@@ -57,13 +60,16 @@ const GeneralJamList: FC = () => {
           ? `Has salido de la Jam "${jam.title}" con éxito`
           : `Te has unido a la Jam "${jam.title}" con éxito`
       );
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    } catch (err) {
-      toast.error("Error en la operación.");
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        toast.error(error.message);
+      } else {
+        toast.error("Error en la operación");
+      }
     }
   };
 
-  if (authLoading || loading) {
+  if (authLoading || jamsLoading) {
     return (
       <>
         <ToastContainer />
@@ -77,7 +83,7 @@ const GeneralJamList: FC = () => {
       <>
         <ToastContainer />
         <Text className="block text-center">
-          {error || "No hay jams disponibles."}
+          {error || "No hay jams abiertas disponibles."}
         </Text>
       </>
     );
@@ -85,7 +91,18 @@ const GeneralJamList: FC = () => {
 
   return (
     <>
-      <ToastContainer />
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
       <div className="flex flex-col items-center gap-6 my-8">
         {jams.map((jam) => (
           <GeneralJamCard

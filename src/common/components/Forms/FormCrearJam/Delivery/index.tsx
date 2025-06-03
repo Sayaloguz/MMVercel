@@ -139,7 +139,7 @@ const FormCrearJam = () => {
       >
         <Input
           placeholder="Grupo para raidear Exodia, Fall Guys de tranquis..."
-          className="text-left"
+          className="custom-input text-left"
         />
       </Form.Item>
 
@@ -151,7 +151,7 @@ const FormCrearJam = () => {
         <Select
           showSearch
           placeholder="Elige un juego"
-          className="text-left"
+          className="custom-input text-left"
           filterOption={(input, option) =>
             (option?.label ?? "").toLowerCase().includes(input.toLowerCase())
           }
@@ -170,7 +170,7 @@ const FormCrearJam = () => {
         <Select
           showSearch
           placeholder="Selecciona el idioma preferido"
-          className="text-left"
+          className="custom-input text-left"
           filterOption={(input, option) =>
             (option?.label ?? "").toLowerCase().includes(input.toLowerCase())
           }
@@ -186,7 +186,7 @@ const FormCrearJam = () => {
       </Form.Item>
 
       <Form.Item name="desc" label="Descripción">
-        <TextArea showCount rows={4} maxLength={300} />
+        <TextArea showCount rows={4} maxLength={300} className="custom-input" />
       </Form.Item>
 
       <div className="flex gap-4">
@@ -198,7 +198,7 @@ const FormCrearJam = () => {
         >
           <DatePicker
             style={{ width: "100%" }}
-            className="text-left"
+            className="custom-input-picker text-left"
             showToday={false}
             disabledDate={(d) =>
               !d || d.isAfter(dayjs().add(1, "year")) || d.isBefore(dayjs())
@@ -217,7 +217,7 @@ const FormCrearJam = () => {
             allowClear={false}
             showNow={false}
             style={{ width: "100%" }}
-            className="text-left"
+            className="custom-input-picker text-left"
           />
         </Form.Item>
       </div>
@@ -244,7 +244,10 @@ const FormCrearJam = () => {
           rules={[{ required: true, message: "Selecciona una duración" }]}
           className="flex-1"
         >
-          <Select placeholder="Duración estimada" className="text-left">
+          <Select
+            placeholder="Duración estimada"
+            className="custom-input text-left"
+          >
             <Select.Option value="15-30">15–30 minutos</Select.Option>
             <Select.Option value="30-60">30–60 minutos</Select.Option>
             <Select.Option value="60-120">1–2 horas</Select.Option>

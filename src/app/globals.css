@@ -1,27 +1,27 @@
 @import "tailwindcss";
 
 @theme inline {
-	--color-background: var(--background);
-	--color-foreground: var(--foreground);
-	--font-sans: var(--font-geist-sans);
-	--font-mono: var(--font-geist-mono);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
 }
 
 @font-face {
-	font-family: "Press Start 2P";
-	src: url("./fonts/PressStart2P-Regular.woff2") format("woff2");
-	font-weight: 400;
-	font-style: normal;
-	font-display: swap;
+  font-family: "Press Start 2P";
+  src: url("./fonts/PressStart2P-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
 :root {
-	--background: #ffffff;
-	--foreground: #ededed;
-	--primary-dark: #1f2937; /* Azul marino (gray-800) */
-	--accent: #ef4444; /* Rojo tailwind (red-500) */
-	--text-light: #ededed;
-	--font-press-start: "Press Start 2P", monospace;
+  --background: #ffffff;
+  --foreground: #ededed;
+  --primary-dark: #1f2937;
+  --accent: #ef4444;
+  --text-light: #ededed;
+  --font-press-start: "Press Start 2P", monospace;
 }
 
 @tailwind base;
@@ -29,34 +29,34 @@
 @tailwind utilities;
 
 @layer utilities {
-	@keyframes fade-in {
-		0% {
-			opacity: 0;
-		}
-		100% {
-			opacity: 0.2;
-		}
-	}
-	.animate-fade-in {
-		animation: fade-in 0.6s ease-in-out;
-	}
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0.2;
+    }
+  }
+  .animate-fade-in {
+    animation: fade-in 0.6s ease-in-out;
+  }
 }
 
 .custom-modal .ant-modal-content {
-	background-color: #181e2c;
+  background-color: #181e2c;
 }
 
 .custom-modal .ant-modal-close-x {
-	color: #e0e0e0;
+  color: #e0e0e0;
 }
 
 .custom-modal .ant-modal-title {
-	color: #ffffff;
+  color: #ffffff;
 }
 
 .custom-modal .ant-modal-header {
-	background-color: #181e2c;
-	border-bottom: 1px solid #e4e4e4;
+  background-color: #181e2c;
+  border-bottom: 1px solid #e4e4e4;
 }
 
 /*
@@ -65,47 +65,109 @@
 }*/
 
 h1 {
-	padding: 30px;
-	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  padding: 5px;
+  margin-top: 30px;
+  margin-bottom: 40px;
+}
+
+/*
+h1 {
+  text-shadow: 2px 2px 1px rgba(2, 2, 4, 1);
+}
+
+h2:not(.nonshadowed) {
+  text-shadow: 2px 2px 1px rgba(2, 2, 4, 1);
+}
+
+
+
+.shadowed {
+  filter: drop-shadow(2px 2px 1px rgba(2, 2, 4, 1));
+}
+  */
+
+h1 {
+  text-shadow: -3px -3px 0 #000, 3px -3px 0 #000, -3px 3px 0 #000,
+    3px 3px 0 #000, 0 -3px 0 #000, 0 3px 0 #000, -3px 0 0 #000, 3px 0 0 #000;
+}
+
+.shadowed {
+  filter: drop-shadow(2px 2px 0 rgba(2, 2, 4, 1))
+    drop-shadow(-2px -2px 0 rgba(2, 2, 4, 1));
+}
+
+h2:not(.nonshadowed) {
+  text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000,
+    2px 2px 0 #000, 0 -2px 0 #000, 0 2px 0 #000, -2px 0 0 #000, 2px 0 0 #000;
 }
 
 h1,
 h2,
 footer {
-	font-family: var(--font-press-start);
-	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
+  font-family: var(--font-press-start);
+}
+
+.shadowed-text {
+  text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000,
+    2px 2px 0 #000, 0 -2px 0 #000, 0 2px 0 #000, -2px 0 0 #000, 2px 0 0 #000;
+}
+
+.shadowed-element {
+  filter: drop-shadow(3px 3px 0 rgba(2, 2, 4, 1))
+    drop-shadow(-3px -3px 0 rgba(2, 2, 4, 1));
+}
+
+.custom-input::placeholder,
+.custom-input input::placeholder {
+  color: rgba(0, 0, 0, 0.55);
+}
+
+.custom-input::placeholder,
+.custom-input input::placeholder {
+  color: rgba(0, 0, 0, 0.55);
+}
+
+/* Select */
+.custom-input .ant-select-selector::placeholder,
+.custom-input .ant-select-selection-placeholder {
+  color: rgba(0, 0, 0, 0.55);
+}
+
+.custom-input-picker .ant-picker-input > input::placeholder {
+  color: rgba(0, 0, 0, 0.55);
+  opacity: 1;
 }
 
 .misjams-tabs .ant-tabs-nav {
-	background-color: rgb(153, 161, 169) !important;
-	margin: -40px;
-	margin-bottom: 10px;
-	font-weight: 500;
-	min-height: 120px;
-	max-height: 120px;
+  background-color: rgb(153, 161, 169) !important;
+  margin: -40px;
+  margin-bottom: 10px;
+  font-weight: 500;
+  min-height: 120px;
+  max-height: 120px;
 }
 
 .misjams-tabs .ant-tabs-tab-active {
-	background-color: rgb(153, 161, 169) !important;
+  background-color: rgb(153, 161, 169) !important;
 }
 
 .misjams-tabs .ant-tabs-tab-active .ant-tabs-tab-btn {
-	text-shadow: 1px 1px 5px rgba(0, 0, 0, 1) !important;
-	font-size: large;
-	/*background-color: rgb(40, 42, 64);*/
-	background-color: #181e2c;
-	padding: 20px;
-	border-radius: 10px;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 1) !important;
+  font-size: large;
+  /*background-color: rgb(40, 42, 64);*/
+  background-color: #181e2c;
+  padding: 20px;
+  border-radius: 10px;
 }
 
 /* Negrita para label de Form.Item */
 .ant-form-item-label > label {
-	font-weight: 600;
+  font-weight: 600;
 }
 
 /* Negrita para el asterisco rojo */
 .ant-form-item-required-mark {
-	font-weight: 600 !important;
+  font-weight: 600 !important;
 }
 
 h1,
@@ -114,42 +176,42 @@ h3,
 h4,
 h5,
 h6 {
-	color: var(--accent) !important;
+  color: var(--accent) !important;
 }
 
 .misjams-tabs .ant-tabs-nav {
-	background: white;
-	border-radius: 6px;
-	padding: 8px;
+  background: white;
+  border-radius: 6px;
+  padding: 8px;
 }
 
 .misjams-tabs .ant-tabs-tab {
-	color: #1a1a1a !important; /* Texto oscuro para buena legibilidad */
+  color: #1a1a1a !important; /* Texto oscuro para buena legibilidad */
 }
 
 .misjams-tabs .ant-tabs-tab-active .ant-tabs-tab-btn {
-	color: #ef4444 !important; /* Color primario para la tab activa */
-	font-weight: 600;
+  color: #ef4444 !important; /* Color primario para la tab activa */
+  font-weight: 600;
 }
 
 .misjams-tabs .ant-tabs-ink-bar {
-	background-color: #ef4444; /* Línea bajo la activa */
+  background-color: #ef4444; /* Línea bajo la activa */
 }
 
 /* Dark mode opcional */
 @media (prefers-color-scheme: dark) {
-	:root {
-		--background: #0a0a0a;
-		--foreground: #ededed;
-		--primary-dark: #111827; /* gray-900 si quieres más oscuro aún */
-	}
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    --primary-dark: #111827; /* gray-900 si quieres más oscuro aún */
+  }
 }
 
 body {
-	background: var(--background);
-	color: var(--foreground);
-	font-family: Arial, Helvetica, sans-serif;
-	background: linear-gradient(360deg, #000000 0%, #182334 100%);
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(360deg, #000000 0%, #182334 100%);
 }
 
 /* #182334
@@ -157,18 +219,18 @@ body {
 */
 
 .bg-primary-dark {
-	background-color: var(--primary-dark);
+  background-color: var(--primary-dark);
 }
 .text-accent {
-	color: var(--accent);
+  color: var(--accent);
 }
 
 .ant-menu-item-selected {
-	color: #f0f0f0 !important; /* o el color que uses normalmente (como text-white) */
-	background-color: rgba(
-		104,
-		104,
-		104,
-		0.08
-	) !important; /* leve fondo en hover */
+  color: #f0f0f0 !important; /* o el color que uses normalmente (como text-white) */
+  background-color: rgba(
+    104,
+    104,
+    104,
+    0.08
+  ) !important; /* leve fondo en hover */
 }

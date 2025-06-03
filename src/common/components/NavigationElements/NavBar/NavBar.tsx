@@ -21,42 +21,42 @@ const { Header } = Layout;
 const navItems = [
   {
     key: "jams",
-    label: (
-      <>
-        <GlobalOutlined className="mr-2" />
-        Jams
-      </>
+    icon: (
+      <span className="shadowed-element mr-2">
+        <GlobalOutlined />
+      </span>
     ),
+    text: "Jams",
     href: "/jams",
   },
   {
     key: "crear",
-    label: (
-      <>
-        <ExperimentOutlined className="mr-2" />
-        Crear Jam
-      </>
+    icon: (
+      <span className="shadowed-element mr-2">
+        <ExperimentOutlined />
+      </span>
     ),
+    text: "Crear Jam",
     href: "/crear-jam",
   },
   {
     key: "mis",
-    label: (
-      <>
-        <FolderOpenOutlined className="mr-2" />
-        Mis Jams
-      </>
+    icon: (
+      <span className="shadowed-element mr-2">
+        <FolderOpenOutlined />
+      </span>
     ),
+    text: "Mis Jams",
     href: "/mis-jams",
   },
   {
     key: "historial",
-    label: (
-      <>
-        <HourglassOutlined className="mr-2" />
-        Historial
-      </>
+    icon: (
+      <span className="shadowed-element mr-2">
+        <HourglassOutlined />
+      </span>
     ),
+    text: "Historial",
     href: "/historial",
   },
 ];
@@ -89,12 +89,13 @@ const NavBar: FC = () => {
           <Image
             src="/mmkr_logov2.png"
             alt="Logo de Matchmaker"
+            className="shadowed-element"
             height={48}
             width={48}
             preview={false}
           />
           <span
-            className="ml-2 text-sm text-white hover:text-red-400 transition"
+            className="shadowed-text ml-2 text-sm text-white hover:text-red-400 transition"
             style={{
               fontFamily: "var(--font-press-start)",
             }}
@@ -115,7 +116,10 @@ const NavBar: FC = () => {
                     key={idx}
                     active
                     size="small"
-                    style={{ width: 100, height: 32 }}
+                    style={{
+                      width: 100,
+                      height: 32,
+                    }}
                   />
                 ))}
               </div>
@@ -125,9 +129,17 @@ const NavBar: FC = () => {
                 selectedKeys={selectedKey ? [selectedKey] : []}
                 className="border-none bg-transparent h-17"
                 disabledOverflow
-                items={filteredItems.map(({ key, label, href }) => ({
+                items={filteredItems.map(({ key, icon, text, href }) => ({
                   key,
-                  label: <Link href={href}>{label}</Link>,
+                  label: (
+                    <Link
+                      href={href}
+                      className="flex items-center gap-2 text-white hover:text-red-400 transition"
+                    >
+                      {icon}
+                      <span className="shadowed-text">{text}</span>
+                    </Link>
+                  ),
                   className: "flex items-center text-xl h-16 leading-[62px]",
                 }))}
               />
@@ -136,7 +148,7 @@ const NavBar: FC = () => {
         )}
       </div>
 
-      {/* Botón hamburguesa móvil */}
+      {/* Hamburguesa */}
       <div className="flex md:hidden">
         <Button
           type="text"
@@ -182,10 +194,9 @@ const NavBar: FC = () => {
             <div className="mt-6">
               {user ? <UserNavAvatar user={user} /> : <LoginButton />}
             </div>
-            {filteredItems.map(({ key, label, href }, index) => (
+            {filteredItems.map(({ key, icon, text, href }, index) => (
               <div key={key} className="flex flex-col">
                 {index === 0 && <hr className="my-4 border-gray-600" />}
-
                 <Link
                   href={href}
                   onClick={() => setDrawerVisible(false)}
@@ -193,9 +204,10 @@ const NavBar: FC = () => {
                     selectedKey === key ? "!text-red-400" : "!text-white"
                   }`}
                 >
-                  {label}
+                  {icon}
+                  <span className="shadowed-text">{text}</span>
                 </Link>
-                {index > -1 && <hr className="mt-2 border-gray-600" />}
+                <hr className="mt-2 border-gray-600" />
               </div>
             ))}
           </div>

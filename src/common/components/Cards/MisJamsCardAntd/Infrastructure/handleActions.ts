@@ -72,7 +72,7 @@ export const updateJam = async (
   };
 
   const res = await fetch(`http://localhost:8080/jams/modify`, {
-    method: "POST",
+    method: "PUT",
     headers: {
       "Content-Type": "application/json",
     },

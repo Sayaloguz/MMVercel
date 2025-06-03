@@ -33,9 +33,7 @@ const PerfilCardAntd: FC<PerfilCardAntdProps> = ({ user, profileUrl }) => {
 
   return (
     <div className="bg-[#1c2331] text-white rounded-2xl shadow-xl border border-gray-700 w-full max-w-3xl mx-auto p-6 sm:p-8 px-4 sm:px-8 transition-all duration-300 flex flex-col justify-between min-h-[260px]">
-      {/* Header: Avatar + Info */}
       <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
-        {/* Avatar con borde */}
         <div className="flex-shrink-0 rounded-full border-4 border-white-600 p-1">
           <Avatar
             size={100}
@@ -45,10 +43,9 @@ const PerfilCardAntd: FC<PerfilCardAntdProps> = ({ user, profileUrl }) => {
           />
         </div>
 
-        {/* Info */}
         <div className="flex-1 w-full">
-          <h2 className="text-base sm:text-xl md:text-2xl font-bold text-white flex items-center gap-2 mb-1">
-            <UserOutlined className="text-blue-400" />
+          <h2 className="text-base sm:text-xl md:text-2xl font-bold  flex items-center gap-2 mb-1">
+            <UserOutlined />
             <span className="break-words whitespace-normal">{user.name}</span>
           </h2>
 
