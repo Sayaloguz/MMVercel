@@ -22,7 +22,7 @@ import {
   gameModeMap,
   languageMap,
   voiceModeMap,
-} from "../Infrastructure/mappers";
+} from "@/common/mappers/mappers";
 
 const MisJamCardAntd: FC<MisJamCardAntdProps> = ({ jam, onActionComplete }) => {
   const [isEditModalVisible, setIsEditModalVisible] = useState(false);
@@ -52,7 +52,7 @@ const MisJamCardAntd: FC<MisJamCardAntdProps> = ({ jam, onActionComplete }) => {
 
   return (
     <>
-      <div className="relative rounded-2xl shadow-lg overflow-hidden transition-transform duration-300 hover:scale-[1.02] max-w-xl mx-auto my-1">
+      <div className="relative rounded-2xl shadow-lg overflow-hidden transition-transform duration-300 hover:scale-[1.02] max-w-xl mx-auto my-1 ">
         {/* Cabecera card */}
         <div className="relative w-full h-60 overflow-hidden rounded-t-2xl">
           <img

@@ -17,7 +17,7 @@ import {
   gameModeMap,
   languageMap,
   voiceModeMap,
-} from "../Infrastructure/mappers";
+} from "@/common/mappers/mappers";
 
 const GeneralJamCard: FC<GeneralJamCardProps> = ({
   jam,
@@ -33,7 +33,7 @@ const GeneralJamCard: FC<GeneralJamCardProps> = ({
     currentUser && currentUser.steamId === jam.createdBy.steamId;
 
   return (
-    <div className="flex flex-col md:flex-row md:max-h-70  bg-gray-50 rounded-2xl shadow-md overflow-hidden w-full max-w-6xl">
+    <div className="flex flex-col md:flex-row md:max-h-70  bg-gray-50 rounded-2xl shadow-md overflow-hidden w-full max-w-6xl  border-2 border-grey-700">
       <div className="w-full md:w-[530px] md:min-w-[300px]  relative overflow-hidden">
         <img
           src={jam.game?.headerImage}

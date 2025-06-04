@@ -16,11 +16,11 @@ import {
   gameModeMap,
   languageMap,
   voiceModeMap,
-} from "../Infrastructure/mapper";
+} from "@/common/mappers/mappers";
 
 const HistoryJamCard: FC<HistoryJamCardProps> = ({ jam }) => {
   return (
-    <div className="flex flex-col bg-white rounded-2xl shadow-md overflow-hidden w-full max-w-sm">
+    <div className="flex flex-col bg-white rounded-2xl shadow-md overflow-hidden w-full max-w-sm border-1 border-grey-700">
       {/* Cabecera card */}
       <div className="relative w-full h-48 overflow-hidden">
         <img

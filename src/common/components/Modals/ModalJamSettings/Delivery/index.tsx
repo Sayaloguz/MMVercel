@@ -12,13 +12,13 @@ import {
 import dayjs from "dayjs";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Jam, JamUpdateDTO } from "@/common/types/utility";
 import {
   durationOptions,
   gameModeOptions,
   languageOptions,
   voiceModeOptions,
-} from "../Infrastructure/mappers";
-import { Jam, JamUpdateDTO } from "@/common/types/utility";
+} from "@/common/mappers/mappers";
 
 interface ModalJamProps {
   isVisible: boolean;

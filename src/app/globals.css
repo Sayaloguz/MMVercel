@@ -226,11 +226,6 @@ body {
 }
 
 .ant-menu-item-selected {
-  color: #f0f0f0 !important; /* o el color que uses normalmente (como text-white) */
-  background-color: rgba(
-    104,
-    104,
-    104,
-    0.08
-  ) !important; /* leve fondo en hover */
+  color: #f0f0f0 !important;
+  background-color: rgba(104, 104, 104, 0.08) !important;
 }

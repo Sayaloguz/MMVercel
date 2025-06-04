@@ -1,4 +1,4 @@
-export const gameModeMap: Record<string, string> = {
+/*export const gameModeMap: Record<string, string> = {
   CASUAL: "🎮 Casual",
   COMPETITIVE: "⚔️ Competitivo",
   COMPLETIST: "🏆 Completista",
@@ -27,3 +27,4 @@ export const durationMap: Record<string, string> = {
   "180-240": "⏱️ 3–4 h",
   "240+": "⏱️ +4 h",
 };
+*/

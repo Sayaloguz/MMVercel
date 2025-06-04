@@ -16,7 +16,16 @@ import dayjs from "dayjs";
 import { useEffect, useState } from "react";
 import type { JamInputDTO, User, Game } from "@/common/types/utility";
 import { toast } from "react-toastify";
-import { modeOptions, voiceOptions } from "../Infrastructure/optionsmapper";
+import {
+  durationOptions,
+  gameModeMap,
+  gameModeOptions,
+  languageOptions,
+  voiceModeMap,
+  voiceModeOptions,
+} from "@/common/mappers/mappers";
+
+import { PlusCircleOutlined } from "@ant-design/icons";
 
 const FormCrearJam = () => {
   const [form] = Form.useForm();
@@ -40,28 +49,13 @@ const FormCrearJam = () => {
       .catch((err) => console.error("Error fetching games:", err));
   }, []);
 
-  const handleFinish = async (values: {
-    title: string;
-    desc: string;
-    game: Game;
-    date: dayjs.Dayjs;
-    time: dayjs.Dayjs;
-    state: "OPEN" | "FULL" | "FINISHED";
-    createdBy: User;
-    createdAt: string;
-    numPlayers: number;
-    players: User[];
-    gameMode: "CASUAL" | "COMPETITIVE" | "COMPLETIST";
-    voice: "TEXT" | "HEAR" | "TALK";
-    lang: "INDEF" | "ES" | "EN" | "FR" | "PT" | "IT";
-    duration: "15-30" | "30-60" | "60-120" | "120-180" | "180-240" | "240+";
-  }) => {
+  const handleFinish = async (values: unknown) => {
     if (!user) {
       toast.error("Debes iniciar sesión para crear una jam.");
       return;
     }
 
-    const selectedGame = games.find((g) => g.appid === values.game.appid);
+    const selectedGame = games.find((g) => g.appid === values.game);
     if (!selectedGame) {
       toast.error("Juego seleccionado no encontrado.");
       return;
@@ -80,13 +74,7 @@ const FormCrearJam = () => {
       players: [user],
       gameMode: values.gameMode,
       voiceMode: values.voice,
-      language: values.lang.toUpperCase() as
-        | "INDEF"
-        | "ES"
-        | "EN"
-        | "FR"
-        | "PT"
-        | "IT",
+      language: values.lang,
       duration: values.duration,
     };
 
@@ -174,14 +162,7 @@ const FormCrearJam = () => {
           filterOption={(input, option) =>
             (option?.label ?? "").toLowerCase().includes(input.toLowerCase())
           }
-          options={[
-            { value: "NOLANG", label: "🌐 - Indiferente" },
-            { value: "ES", label: "🇪🇸 - Español" },
-            { value: "EN", label: "🇬🇧 - English" },
-            { value: "PT", label: "🇵🇹 - Portuguese" },
-            { value: "FR", label: "🇫🇷 - French" },
-            { value: "IT", label: "🇮🇹 - Italian" },
-          ]}
+          options={languageOptions}
         />
       </Form.Item>
 
@@ -222,7 +203,6 @@ const FormCrearJam = () => {
         </Form.Item>
       </div>
 
-      {/* Número de jugadores y duración en la misma línea */}
       <div className="flex gap-4">
         <Form.Item
           name="numPlayers"
@@ -247,14 +227,8 @@ const FormCrearJam = () => {
           <Select
             placeholder="Duración estimada"
             className="custom-input text-left"
-          >
-            <Select.Option value="15-30">15–30 minutos</Select.Option>
-            <Select.Option value="30-60">30–60 minutos</Select.Option>
-            <Select.Option value="60-120">1–2 horas</Select.Option>
-            <Select.Option value="120-180">2–3 horas</Select.Option>
-            <Select.Option value="180-240">3–4 horas</Select.Option>
-            <Select.Option value="240+">4+ horas</Select.Option>
-          </Select>
+            options={durationOptions}
+          />
         </Form.Item>
       </div>
 
@@ -265,7 +239,7 @@ const FormCrearJam = () => {
           className="!flex w-full"
           buttonStyle="solid"
         >
-          {modeOptions.map((opt) => (
+          {gameModeOptions.map((opt) => (
             <Radio.Button
               key={opt.value}
               value={opt.value}
@@ -273,8 +247,12 @@ const FormCrearJam = () => {
                 mode === opt.value ? "!font-bold" : ""
               }`}
             >
-              <div className="text-2xl bg-slate-50 rounded-lg">{opt.emoji}</div>
-              <div className="mt-1 text-sm">{opt.label}</div>
+              <div className="text-2xl bg-slate-50 rounded-lg">
+                {gameModeMap[opt.value].split(" ")[0]}
+              </div>
+              <div className="mt-1 text-sm">
+                {gameModeMap[opt.value].split(" ").slice(1).join(" ")}
+              </div>
             </Radio.Button>
           ))}
         </Radio.Group>
@@ -287,7 +265,7 @@ const FormCrearJam = () => {
           className="!flex w-full"
           buttonStyle="solid"
         >
-          {voiceOptions.map((opt) => (
+          {voiceModeOptions.map((opt) => (
             <Radio.Button
               key={opt.value}
               value={opt.value}
@@ -295,16 +273,20 @@ const FormCrearJam = () => {
                 voice === opt.value ? "font-bold" : ""
               }`}
             >
-              <div className="text-2xl bg-slate-50 rounded-lg">{opt.emoji}</div>
-              <div className="mt-1 text-sm">{opt.label}</div>
+              <div className="text-2xl bg-slate-50 rounded-lg">
+                {voiceModeMap[opt.value].split(" ")[0]}
+              </div>
+              <div className="mt-1 text-sm">
+                {voiceModeMap[opt.value].split(" ").slice(1).join(" ")}
+              </div>
             </Radio.Button>
           ))}
         </Radio.Group>
       </Form.Item>
 
       <Form.Item>
-        <Button type="primary" htmlType="submit" className="w-full">
-          🚀 Crear Jam
+        <Button type="primary" htmlType="submit" className="w-3/5 !font-bold">
+          <PlusCircleOutlined /> Crear Jam
         </Button>
       </Form.Item>
     </Form>

@@ -45,7 +45,7 @@ const PerfilCardAntd: FC<PerfilCardAntdProps> = ({ user, profileUrl }) => {
 
         <div className="flex-1 w-full">
           <h2 className="text-base sm:text-xl md:text-2xl font-bold  flex items-center gap-2 mb-1">
-            <UserOutlined />
+            <UserOutlined className="shadowed-element" />
             <span className="break-words whitespace-normal">{user.name}</span>
           </h2>
 

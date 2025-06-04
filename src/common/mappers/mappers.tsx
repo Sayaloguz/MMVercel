@@ -1,3 +1,8 @@
+// Función utilitaria
+const mapToOptions = (map: Record<string, string>) =>
+  Object.entries(map).map(([value, label]) => ({ value, label }));
+
+// Mapas
 export const gameModeMap: Record<string, string> = {
   CASUAL: "🎮 Casual",
   COMPETITIVE: "⚔️ Competitivo",
@@ -27,3 +32,9 @@ export const durationMap: Record<string, string> = {
   "180-240": "⏱️ 3–4 h",
   "240+": "⏱️ +4 h",
 };
+
+// Opciones para Select
+export const gameModeOptions = mapToOptions(gameModeMap);
+export const voiceModeOptions = mapToOptions(voiceModeMap);
+export const languageOptions = mapToOptions(languageMap);
+export const durationOptions = mapToOptions(durationMap);

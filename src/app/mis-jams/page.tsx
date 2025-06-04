@@ -27,7 +27,7 @@ export default function MisJamsPage() {
         Explora las Jams a las que te has unido o que has creado.
       </p>
       <div className="min-h-screen flex items-center justify-center px-4 my-6">
-        <div className="container max-w-3xl bg-slate-800/70 p-10 rounded-lg shadow-md">
+        <div className="container max-w-3xl bg-slate-800/70 p-10 rounded-lg shadow-md border-1 border-grey-700">
           <MisJamTabs />
         </div>
       </div>
