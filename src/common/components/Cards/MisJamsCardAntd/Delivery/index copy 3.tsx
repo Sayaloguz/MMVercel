@@ -1,5 +1,6 @@
+// Importaciones y hooks (sin cambios importantes)
 import React, { FC, useState } from "react";
-import { Avatar, Button, Tag, Tooltip } from "antd";
+import { Avatar, Modal, List, Button, Tag, Tooltip } from "antd";
 import {
   DeleteOutlined,
   SettingOutlined,
@@ -8,12 +9,8 @@ import {
 } from "@ant-design/icons";
 import { UserGroupIcon } from "@/common/components/CustomIcons";
 import ModalJam from "../../../Modals/ModalJamSettings/Delivery";
-import InviteUserModal from "@/common/components/Modals/InviteUserModal/Delivery";
-
-import ModalPlayers from "@/common/components/Modals/ModalPlayers/Delivery";
-import ConfirmExpelPlayerModal from "@/common/components/Modals/ConfirmExpelPlayerModal/Delivery";
-import ConfirmLeaveJamModal from "@/common/components/Modals/ConfirmLeaveJamModal/Delivery";
-
+import ConfirmModalAntd from "../../../Modals/ConfirmModalAntd/Delivery";
+import { User } from "@/common/types/utility";
 import { useAuth } from "@/common/hooks/useAuth";
 import { MisJamCardAntdProps } from "./interface";
 import { useJamActions } from "../Infrastructure/useJamActions";
@@ -25,7 +22,7 @@ import {
   languageMap,
   voiceModeMap,
 } from "@/common/utils/mappers";
-import ConfirmDeleteJamModal from "@/common/components/Modals/ConfirmDeleteModal/Delivery";
+import InviteUserModal from "@/common/components/Modals/InviteUserModal/Delivery";
 
 const MisJamCardAntd: FC<MisJamCardAntdProps> = ({ jam, onActionComplete }) => {
   const [isEditModalVisible, setIsEditModalVisible] = useState(false);
@@ -81,7 +78,7 @@ const MisJamCardAntd: FC<MisJamCardAntdProps> = ({ jam, onActionComplete }) => {
         <div className="bg-white p-4 space-y-2">
           <div className="flex items-center justify-start gap-4 text-sm text-gray-600 font-medium mb-1 flex-wrap">
             {!isOwner && (
-              <Link href={`/perfil?id=${createdBy.steamId}`}>
+              <Link href={`/perfil/${createdBy.steamId}`}>
                 <div className="flex items-center gap-2 text-gray-900 hover:underline hover:text-red-600 cursor-pointer">
                   <Avatar src={createdBy.avatar} />
                   <span>{createdBy.name || "Creador"}</span>
@@ -174,55 +171,111 @@ const MisJamCardAntd: FC<MisJamCardAntdProps> = ({ jam, onActionComplete }) => {
         isLoading={loadingUpdate}
       />
 
-      <ConfirmDeleteJamModal
-        isVisible={isConfirmDeleteVisible}
+      <ConfirmModalAntd
+        title="¿Eliminar Jam?"
+        icon={<DeleteOutlined className="text-4xl" />}
+        message="Vas a eliminar la jam seleccionada y no se va a poder deshacer. ¿Estás seguro/a?"
+        open={isConfirmDeleteVisible}
+        confirmLoading={loadingDelete}
         onCancel={() => setIsConfirmDeleteVisible(false)}
-        onConfirm={() =>
-          handleDelete().then(() => setIsConfirmDeleteVisible(false))
-        }
-        loading={loadingDelete}
+        onConfirm={() => {
+          handleDelete().then(() => setIsConfirmDeleteVisible(false));
+        }}
       />
 
-      <ConfirmExpelPlayerModal
-        playerSteamId={playerToExpel}
+      <ConfirmModalAntd
+        title="¿Expulsar jugador/a?"
+        icon={<DeleteOutlined className="text-4xl" />}
+        message="¿Estás seguro/a de que quieres expulsar a este jugador/a?"
+        open={playerToExpel !== null}
+        confirmLoading={loadingExpel}
         onCancel={() => setPlayerToExpel(null)}
-        onConfirm={() =>
-          playerToExpel
-            ? handleConfirmExpel(playerToExpel).then(() =>
-                setPlayerToExpel(null)
-              )
-            : Promise.resolve()
-        }
-        loading={loadingExpel}
+        onConfirm={() => {
+          if (playerToExpel) {
+            handleConfirmExpel(playerToExpel).then(() =>
+              setPlayerToExpel(null)
+            );
+          }
+        }}
       />
 
-      <ConfirmLeaveJamModal
-        isVisible={isConfirmLeaveVisible}
+      <ConfirmModalAntd
+        title="¿Salir de la Jam?"
+        icon={<UserGroupIcon className="text-4xl" />}
+        message="¿Seguro/a que quieres salir? Si te quieres unir de nuevo, tendrás que volver a solicitarlo y puede ser que te quedes sin sitio."
+        open={isConfirmLeaveVisible}
+        confirmLoading={loadingDelete}
         onCancel={() => setIsConfirmLeaveVisible(false)}
-        onConfirm={() =>
-          handleConfirmLeave().then(() => setIsConfirmLeaveVisible(false))
-        }
-        loading={loadingDelete}
+        onConfirm={() => {
+          handleConfirmLeave().then(() => setIsConfirmLeaveVisible(false));
+        }}
       />
 
-      <ModalPlayers
-        isVisible={isPlayersModalVisible}
-        onClose={() => setIsPlayersModalVisible(false)}
-        players={players}
-        currentUserSteamId={currentUser?.steamId}
-        isOwner={isOwner}
-        maxPlayersReached={maxPlayersReached}
-        onExpelPlayer={setPlayerToExpel}
-        onOpenInviteModal={() => setIsInviteModalVisible(true)}
-      />
+      {/* Modal de jugadores */}
+      <Modal
+        title="Jugadores"
+        open={isPlayersModalVisible}
+        onCancel={() => setIsPlayersModalVisible(false)}
+        footer={null}
+      >
+        {isOwner && (
+          <Tooltip
+            title={
+              maxPlayersReached
+                ? "Ya está el máximo de jugadores permitido"
+                : ""
+            }
+          >
+            <Button
+              type="default"
+              onClick={() => setIsInviteModalVisible(true)}
+              disabled={maxPlayersReached}
+              style={{ marginBottom: 16 }}
+              block
+            >
+              Invitar jugador
+            </Button>
+          </Tooltip>
+        )}
+        <List
+          dataSource={players}
+          renderItem={(player: User) => {
+            const isCurrentUser = currentUser?.steamId === player.steamId;
+            return (
+              <List.Item
+                key={player.steamId}
+                actions={
+                  isOwner && !isCurrentUser
+                    ? [
+                        <Button
+                          key={player.steamId}
+                          danger
+                          onClick={() => setPlayerToExpel(player.steamId)}
+                        >
+                          Expulsar
+                        </Button>,
+                      ]
+                    : []
+                }
+              >
+                <List.Item.Meta
+                  avatar={<Avatar src={player.avatar} />}
+                  title={isCurrentUser ? "Tú" : player.name}
+                />
+              </List.Item>
+            );
+          }}
+        />
+      </Modal>
 
+      {/* Solo un único modal de invitación */}
       {isInviteModalVisible && currentUser && (
         <InviteUserModal
           jam={jam}
           currentUserId={currentUser.steamId}
           onClose={() => setIsInviteModalVisible(false)}
           onInvitationSent={() => {
-            // Aquí refresca datos si quieres
+            // Aquí puedes refrescar datos si quieres
           }}
         />
       )}

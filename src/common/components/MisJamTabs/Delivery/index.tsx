@@ -55,30 +55,30 @@ const MisJamTabs = () => {
   if (authError) return <p className="text-red-500">{authError}</p>;
 
   return (
-    <Spin spinning={loading} tip="Cargando Jams...">
+    <Spin spinning={loading}>
       <Tabs
         className="misjams-tabs"
-        defaultActiveKey="created"
+        defaultActiveKey="joined"
         centered
         size="large"
         items={[
-          {
-            key: "created",
-            label: "Jams creadas",
-            children: (
-              <MisJamList
-                jams={createdJams}
-                refreshJams={refreshJams}
-                editable
-              />
-            ),
-          },
           {
             key: "joined",
             label: "Participaciones",
             children: (
               <MisJamList
                 jams={joinedJams}
+                refreshJams={refreshJams}
+                editable
+              />
+            ),
+          },
+          {
+            key: "created",
+            label: "Jams creadas",
+            children: (
+              <MisJamList
+                jams={createdJams}
                 refreshJams={refreshJams}
                 editable
               />
