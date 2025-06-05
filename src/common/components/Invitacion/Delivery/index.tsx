@@ -1,3 +1,5 @@
+"use client";
+
 import { FC } from "react";
 import { Avatar, Tag } from "antd";
 import dayjs from "dayjs";
@@ -8,19 +10,49 @@ import {
   languageMap,
   voiceModeMap,
 } from "@/common/utils/mappers";
+import {
+  handleAceptar,
+  handleRechazar,
+} from "../Infrastructure/invitacionHandlers";
 
 interface InvitacionProps {
   invitation: FullInvitation;
+  onChange?: () => void;
+  aceptarInvitacion: (jamId: string) => Promise<boolean>;
+  rechazarInvitacion: (invId: string) => Promise<boolean>;
 }
 
-const Invitacion: FC<InvitacionProps> = ({ invitation }) => {
+const Invitacion: FC<InvitacionProps> = ({
+  invitation,
+  onChange,
+  aceptarInvitacion,
+  rechazarInvitacion,
+}) => {
   const {
     sender,
     jam,
-    invitation: { sentDate },
+    invitation: { sentDate, invId, jamId },
   } = invitation;
 
   const fechaFormateada = dayjs(sentDate).format("DD/MM/YYYY [a las] HH:mm");
+
+  const onAceptarClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    console.log("Aceptar clic, no debería recargar");
+    await handleAceptar(
+      jamId,
+      invId,
+      aceptarInvitacion,
+      rechazarInvitacion,
+      onChange
+    );
+  };
+
+  const onRechazarClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    console.log("Rechazar clic, no debería recargar");
+    await handleRechazar(invId, rechazarInvitacion, onChange);
+  };
 
   return (
     <div className="bg-[#2a3242] rounded-lg px-4 py-3 flex items-start gap-4 shadow-sm">
@@ -29,9 +61,8 @@ const Invitacion: FC<InvitacionProps> = ({ invitation }) => {
         src={sender.avatar}
         className="rounded-full self-center mt-1"
       />
-
       <div className="flex-1 text-white">
-        <p className="">
+        <p>
           <span className="text-red font-semibold">{sender.name}</span> te ha
           invitado el{" "}
           <span className="text-red-300 font-semibold">{fechaFormateada}</span>{" "}
@@ -49,10 +80,18 @@ const Invitacion: FC<InvitacionProps> = ({ invitation }) => {
             <Tag color="green">{durationMap[jam.duration]}</Tag>
           </div>
           <div className="gap-3 flex items-center">
-            <button className="bg-black p-2 px-4 border-gray-500 border-2 rounded-xl hover:bg-red-900 transition min-w-[100px] min-h-[45px]">
+            <button
+              type="button"
+              className="bg-black p-2 px-4 border-gray-500 border-2 rounded-xl hover:bg-red-900 transition min-w-[100px] min-h-[45px]"
+              onClick={onRechazarClick}
+            >
               Rechazar
             </button>
-            <button className="bg-green-600/70 p-2 px-4 border-gray-500 border-2 rounded-xl hover:bg-green-600 transition min-w-[100px] min-h-[40px]">
+            <button
+              type="button"
+              className="bg-green-600/70 p-2 px-4 border-gray-500 border-2 rounded-xl hover:bg-green-600 transition min-w-[100px] min-h-[40px]"
+              onClick={onAceptarClick}
+            >
               Aceptar
             </button>
           </div>
