@@ -1,4 +1,4 @@
-"use client";
+// hooks/useUserInvitations.ts (o donde esté definido)
 
 import { useEffect, useState, useCallback } from "react";
 import { FullInvitation, Invitation, Jam, User } from "../types/utility";
@@ -111,5 +111,6 @@ export function useUserInvitations() {
     refetch: fetchInvitaciones,
     aceptarInvitacion,
     rechazarInvitacion,
+    setInvitaciones, // <-- agregado aquí
   };
 }

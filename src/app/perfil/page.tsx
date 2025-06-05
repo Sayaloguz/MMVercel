@@ -33,7 +33,6 @@ export default function PerfilPage() {
       <div className="w-4/5 mx-auto mt-12">
         <PerfilCardAntd user={usuario} />
         <div className="p-4" />
-        {/* Ahora InvitacionesCard controla sus invitaciones internamente */}
         <InvitacionesCard />
       </div>
     </div>
