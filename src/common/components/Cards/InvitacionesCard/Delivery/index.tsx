@@ -31,7 +31,6 @@ export default function InvitacionesCard() {
     toast.error(error);
   }
 
-  // Funciones que se pasan a Invitacion, devuelven promesa<boolean>
   const onAceptar = async (jamId: string, invId: string): Promise<boolean> => {
     try {
       const aceptado = await aceptarInvitacion(jamId);

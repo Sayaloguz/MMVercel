@@ -2,7 +2,7 @@
 
 import React, { FC } from "react";
 import { Spin, Typography } from "antd";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { useAuth } from "@/common/hooks/useAuth";
 import GeneralJamCard from "../../GeneralJamCardAntd/Delivery";
 import { Jam, User } from "@/common/types/utility";
@@ -66,7 +66,6 @@ const GeneralJamList: FC = () => {
   if (authLoading || loading) {
     return (
       <>
-        <ToastContainer />
         <Spin className="block mx-auto my-8" />
       </>
     );
@@ -75,7 +74,6 @@ const GeneralJamList: FC = () => {
   if (error || jams.length === 0) {
     return (
       <>
-        <ToastContainer />
         <Text className="block text-center">
           {error || "No hay jams disponibles."}
         </Text>
@@ -85,7 +83,6 @@ const GeneralJamList: FC = () => {
 
   return (
     <>
-      <ToastContainer />
       <div className="flex flex-col items-center gap-6 my-8">
         {jams.map((jam) => (
           <GeneralJamCard

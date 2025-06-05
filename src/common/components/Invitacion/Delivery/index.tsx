@@ -42,7 +42,7 @@ const Invitacion: FC<InvitacionProps> = ({
         setIsRemoving(true);
         setTimeout(() => {
           onRemove();
-        }, 300); // espera transición
+        }, 300);
       }
     } finally {
       setLoading(false);
@@ -92,14 +92,14 @@ const Invitacion: FC<InvitacionProps> = ({
           ¿te apuntas?
         </p>
 
-        <div className="flex flex-col sm:flex-row sm:justify-between justify-center mt-3 gap-2">
-          <div className="flex flex-wrap gap-1 justify-center sm:justify-start">
+        <div className="flex flex-col sm:flex-row sm:justify-between justify-center mt-2">
+          <div className="flex flex-wrap mt-1 gap-1 justify-center sm:justify-start">
             <Tag
               color="red"
               style={{
                 fontSize: "14px",
                 fontWeight: "bold",
-                padding: "4px 8px",
+                padding: "4px",
                 display: "flex",
                 alignItems: "center",
               }}
@@ -111,7 +111,7 @@ const Invitacion: FC<InvitacionProps> = ({
               style={{
                 fontSize: "14px",
                 fontWeight: "bold",
-                padding: "4px 8px",
+                padding: "4px",
                 display: "flex",
                 alignItems: "center",
               }}
@@ -123,7 +123,7 @@ const Invitacion: FC<InvitacionProps> = ({
               style={{
                 fontSize: "14px",
                 fontWeight: "bold",
-                padding: "4px 8px",
+                padding: "4px",
                 display: "flex",
                 alignItems: "center",
               }}
@@ -135,7 +135,7 @@ const Invitacion: FC<InvitacionProps> = ({
               style={{
                 fontSize: "14px",
                 fontWeight: "bold",
-                padding: "4px 8px",
+                padding: "4px",
                 display: "flex",
                 alignItems: "center",
               }}

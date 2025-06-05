@@ -58,7 +58,7 @@ const MisJamCardAntd: FC<MisJamCardAntdProps> = ({ jam, onActionComplete }) => {
   return (
     <>
       {/* Card principal */}
-      <div className="relative rounded-2xl shadow-lg overflow-hidden transition-transform duration-300 hover:scale-[1.02] max-w-xl mx-auto my-1">
+      <div className="relative rounded-2xl shadow-lg overflow-hidden transition-transform duration-300 hover:scale-[1.02] max-w-xl mx-auto my-1 border-gray-700 border-2">
         {/* Cabecera */}
         <div className="relative w-full h-60 overflow-hidden rounded-t-2xl">
           <img

@@ -45,6 +45,11 @@ const HistoryJamList = () => {
 
   return (
     <div className="w-full max-w-[1200px] mx-auto mt-4 py-2 px-4">
+      {jams.length === 0 && (
+        <div className="text-center text-gray-500 pt-20">
+          No has participado en ninguna Jam aún.
+        </div>
+      )}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-items-center">
         {jams.map((jam) => (
           <div key={jam.id} className="w-full max-w-sm">
