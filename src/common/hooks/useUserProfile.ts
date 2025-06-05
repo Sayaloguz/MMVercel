@@ -12,7 +12,6 @@ export function useUserProfile(steamIdFromUrl?: string) {
   const [error, setError] = useState<string | null>(null);
   const [cargando, setCargando] = useState(true);
 
-  // Función para obtener usuario desde API
   async function fetchUser(steamId: string) {
     setCargando(true);
     setError(null);
@@ -72,8 +71,7 @@ export function useUserProfile(steamIdFromUrl?: string) {
     }
 
     // Si no hay steamId ni usuario autenticado
-    setError("No se proporcionó una Steam ID");
-    setCargando(false);
+    router.replace(`/`);
   }, [authLoading, authError, authUser, steamIdFromUrl, router]);
 
   return { usuario, error, cargando };

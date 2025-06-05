@@ -1,19 +1,19 @@
-// app/perfil/PerfilContent.tsx
 "use client";
 
 import { useSearchParams } from "next/navigation";
 import PerfilCardAntd from "@/common/components/Cards/PerfilCardAntd/Delivery";
 import InvitacionesCard from "@/common/components/Cards/InvitacionesCard/Delivery";
 import { useUserProfile } from "@/common/hooks/useUserProfile";
-import { useAuth } from "@/common/hooks/useAuth";
+import { useAuth } from "@/common/hooks/useAuth"; // Importar hook de autenticación
 import { Skeleton } from "antd";
+import { Suspense } from "react";
 
-export default function PerfilContent() {
+export default function PerfilPage() {
   const searchParams = useSearchParams();
   const id = searchParams.get("id");
 
   const { usuario, error, cargando } = useUserProfile(id || undefined);
-  const { user: authUser, loading: authLoading } = useAuth();
+  const { user: authUser, loading: authLoading } = useAuth(); // Obtener usuario autenticado
 
   if (cargando || authLoading) {
     return (
@@ -34,10 +34,14 @@ export default function PerfilContent() {
   const esPropietarioPerfil = authUser?.steamId === usuario.steamId;
 
   return (
-    <div className="w-4/5 mx-auto mt-12">
-      <PerfilCardAntd user={usuario} />
-      <div className="p-4" />
-      {esPropietarioPerfil && <InvitacionesCard />}
+    <div>
+      <Suspense>
+        <div className="w-4/5 mx-auto mt-12">
+          <PerfilCardAntd user={usuario} />
+          <div className="p-4" />
+          {esPropietarioPerfil && <InvitacionesCard />}
+        </div>
+      </Suspense>
     </div>
   );
 }

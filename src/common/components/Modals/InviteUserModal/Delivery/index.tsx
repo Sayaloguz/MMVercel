@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Modal, Select, Button, Spin, Empty } from "antd";
+import { Modal, Select, Spin, Empty } from "antd";
 import { Jam, User } from "@/common/types/utility";
 import { toast } from "react-toastify";
 
@@ -108,7 +108,7 @@ export default function InviteUserModal({
       cancelText="Cancelar"
       confirmLoading={sendingInvitation}
       okButtonProps={{ disabled: !selectedUserId }}
-      destroyOnClose
+      destroyOnHidden
     >
       <div className="min-h-[120px] p-10 flex flex-col justify-center">
         {loadingUsers ? (

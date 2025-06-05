@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Modal, Select, Button, Spin, message } from "antd";
+import { Modal, Select, Spin } from "antd";
 import { Jam, User } from "@/common/types/utility";
 import { toast } from "react-toastify";
 
@@ -31,7 +31,7 @@ export default function InviteUserModal({
       try {
         const res = await fetch("http://localhost:8080/users/");
         if (!res.ok) throw new Error("Error cargando usuarios");
-        const dataRaw: any[] = await res.json();
+        const dataRaw: User[] = await res.json();
 
         const mappedUsers: User[] = dataRaw.map((u) => ({
           id: u.steamId,
@@ -93,7 +93,7 @@ export default function InviteUserModal({
       cancelText="Cancelar"
       confirmLoading={sendingInvitation}
       okButtonProps={{ disabled: !selectedUserId }}
-      destroyOnClose
+      destroyOnHidden
     >
       {loadingUsers ? (
         <Spin />

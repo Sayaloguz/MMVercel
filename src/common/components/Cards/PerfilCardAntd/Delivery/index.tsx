@@ -8,6 +8,7 @@ import {
   CalendarOutlined,
 } from "@ant-design/icons";
 import { PerfilCardAntdProps } from "./interface";
+import PerfilActions from "./Infrastructure/perfilActions";
 
 const PerfilCardAntd: FC<PerfilCardAntdProps> = ({ user, profileUrl }) => {
   const steamProfileUrl =
@@ -44,7 +45,7 @@ const PerfilCardAntd: FC<PerfilCardAntdProps> = ({ user, profileUrl }) => {
         </div>
 
         <div className="flex-1 w-full">
-          <h2 className="text-base sm:text-xl md:text-2xl font-bold  flex items-center gap-2 mb-1">
+          <h2 className="text-base sm:text-xl md:text-2xl font-bold flex items-center gap-2 mb-1">
             <UserOutlined className="shadowed-element" />
             <span className="break-words whitespace-normal">{user.name}</span>
           </h2>
@@ -77,8 +78,8 @@ const PerfilCardAntd: FC<PerfilCardAntdProps> = ({ user, profileUrl }) => {
         ))}
       </div>
 
-      {/* Botón abajo a la derecha */}
-      <div className="flex justify-end mt-6">
+      {/* Botones abajo a la derecha */}
+      <div className="flex flex-wrap justify-end gap-2 mt-6">
         <Button
           href={steamProfileUrl}
           target="_blank"
@@ -87,6 +88,7 @@ const PerfilCardAntd: FC<PerfilCardAntdProps> = ({ user, profileUrl }) => {
         >
           Ver perfil en Steam
         </Button>
+        <PerfilActions steamId={user.steamId} />
       </div>
     </div>
   );

@@ -12,6 +12,7 @@ const MisJamTabs = () => {
   const [createdJams, setCreatedJams] = useState<Jam[]>([]);
   const [joinedJams, setJoinedJams] = useState<Jam[]>([]);
   const [loading, setLoading] = useState(true);
+  const [hasFetched, setHasFetched] = useState(false);
 
   const refreshJams = async () => {
     if (!user) return;
@@ -46,10 +47,12 @@ const MisJamTabs = () => {
   };
 
   useEffect(() => {
-    if (authLoading || !user) return;
-    refreshJams();
+    if (!authLoading && user?.steamId && !hasFetched) {
+      refreshJams();
+      setHasFetched(true);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [authLoading, user]);
+  }, [authLoading, user?.steamId, hasFetched]);
 
   if (authLoading) return null;
   if (authError) return <p className="text-red-500">{authError}</p>;
