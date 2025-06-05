@@ -17,7 +17,7 @@ import {
   gameModeMap,
   languageMap,
   voiceModeMap,
-} from "@/common/mappers/mappers";
+} from "@/common/utils/mappers";
 
 const GeneralJamCard: FC<GeneralJamCardProps> = ({
   jam,

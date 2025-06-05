@@ -18,7 +18,7 @@ import {
   gameModeOptions,
   languageOptions,
   voiceModeOptions,
-} from "@/common/mappers/mappers";
+} from "@/common/utils/mappers";
 
 interface ModalJamProps {
   isVisible: boolean;

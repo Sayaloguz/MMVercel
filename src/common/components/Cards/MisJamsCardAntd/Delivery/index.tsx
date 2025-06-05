@@ -22,7 +22,7 @@ import {
   gameModeMap,
   languageMap,
   voiceModeMap,
-} from "@/common/mappers/mappers";
+} from "@/common/utils/mappers";
 
 const MisJamCardAntd: FC<MisJamCardAntdProps> = ({ jam, onActionComplete }) => {
   const [isEditModalVisible, setIsEditModalVisible] = useState(false);

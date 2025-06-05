@@ -23,7 +23,7 @@ import {
   languageOptions,
   voiceModeMap,
   voiceModeOptions,
-} from "@/common/mappers/mappers";
+} from "@/common/utils/mappers";
 
 import { PlusCircleOutlined } from "@ant-design/icons";
 

@@ -16,7 +16,7 @@ import {
   gameModeMap,
   languageMap,
   voiceModeMap,
-} from "@/common/mappers/mappers";
+} from "@/common/utils/mappers";
 
 const HistoryJamCard: FC<HistoryJamCardProps> = ({ jam }) => {
   return (

@@ -33,6 +33,20 @@ export type Jam = {
   duration: "15-30" | "30-60" | "60-120" | "120-180" | "180-240" | "240+";
 };
 
+export type Invitation = {
+  invId: string;
+  jamId: string;
+  senderId: string;
+  receiverId: string;
+  sentDate: string;
+};
+
+export type FullInvitation = {
+  invitation: Invitation;
+  sender: User;
+  jam: Jam;
+};
+
 export interface JamInputDTO {
   title: string;
   description: string;
