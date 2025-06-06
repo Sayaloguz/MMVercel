@@ -26,6 +26,7 @@ import {
 } from "@/common/utils/mappers";
 
 import { PlusCircleOutlined } from "@ant-design/icons";
+import { API_URL } from "@/common/utils/config";
 
 const FormCrearJam = () => {
   const [form] = Form.useForm();
@@ -36,12 +37,12 @@ const FormCrearJam = () => {
   const [voice, setVoice] = useState("TEXT");
 
   useEffect(() => {
-    fetch("http://localhost:8080/auth/me", { credentials: "include" })
+    fetch(`${API_URL}/auth/me`, { credentials: "include" })
       .then((res) => (res.ok ? res.json() : null))
       .then((data) => setUser(data))
       .finally(() => setLoading(false));
 
-    fetch("http://localhost:8080/games/")
+    fetch(`${API_URL}/games/`)
       .then((res) => res.json())
       .then((data) => {
         setGames(Array.isArray(data) ? data : data.games || []);
@@ -79,7 +80,7 @@ const FormCrearJam = () => {
     };
 
     try {
-      const response = await fetch("http://localhost:8080/jams/save", {
+      const response = await fetch(`${API_URL}/jams/save`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(jamPayload),

@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { Jam, User } from "@/common/types/utility";
 import HistoryJamCard from "../../HistoryJamCard/Delivery";
+import { API_URL } from "@/common/utils/config";
 
 const HistoryJamList = () => {
   const [user, setUser] = useState<User | null>(null);
@@ -10,14 +11,14 @@ const HistoryJamList = () => {
   useEffect(() => {
     const fetchUserAndJams = async () => {
       try {
-        const userRes = await fetch("http://localhost:8080/auth/me", {
+        const userRes = await fetch(`${API_URL}/auth/me`, {
           credentials: "include",
         });
         if (!userRes.ok) throw new Error("Error al obtener usuario");
         const userData = await userRes.json();
         setUser(userData);
 
-        const res = await fetch("http://localhost:8080/jams/byState/finished");
+        const res = await fetch(`${API_URL}/jams/byState/finished`);
         if (!res.ok) throw new Error("Error al obtener jams");
 
         const allJams: Jam[] = await res.json();

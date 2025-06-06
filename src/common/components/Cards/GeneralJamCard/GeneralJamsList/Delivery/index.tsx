@@ -8,6 +8,7 @@ import GeneralJamCard from "../../GeneralJamCardAntd/Delivery";
 import { Jam, User } from "@/common/types/utility";
 import "react-toastify/dist/ReactToastify.css";
 import useFilteredJams from "@/common/hooks/useFIlteredJams";
+import { API_URL } from "@/common/utils/config";
 
 const { Text } = Typography;
 
@@ -38,7 +39,7 @@ const GeneralJamList: FC = () => {
         ? `removePlayer/${currentUser.steamId}`
         : "addPlayer";
       const method = userIsInJam ? "DELETE" : "POST";
-      const url = `http://localhost:8080/jams/${jam.id}/${endpoint}`;
+      const url = `${API_URL}/jams/${jam.id}/${endpoint}`;
 
       const res = await fetch(url, {
         method,

@@ -1,8 +1,7 @@
-// hooks/useUserInvitations.ts (o donde esté definido)
-
 import { useEffect, useState, useCallback } from "react";
 import { FullInvitation, Invitation, Jam, User } from "../types/utility";
 import { useAuth } from "./useAuth";
+import { API_URL } from "@/common/utils/config";
 
 export function useUserInvitations() {
   const { user: authUser, loading: authLoading } = useAuth();
@@ -21,9 +20,7 @@ export function useUserInvitations() {
     setCargando(true);
 
     try {
-      const res = await fetch(
-        `http://localhost:8080/invitations/${authUser.steamId}`
-      );
+      const res = await fetch(`${API_URL}/invitations/${authUser.steamId}`);
       if (!res.ok) {
         throw new Error(`Error al obtener las invitaciones: ${res.status}`);
       }
@@ -33,8 +30,8 @@ export function useUserInvitations() {
       const enriched: FullInvitation[] = await Promise.all(
         invitaciones.map(async (inv) => {
           const [senderRes, jamRes] = await Promise.all([
-            fetch(`http://localhost:8080/users/byId/mongo/${inv.senderId}`),
-            fetch(`http://localhost:8080/jams/byId/${inv.jamId}`),
+            fetch(`${API_URL}/users/byId/mongo/${inv.senderId}`),
+            fetch(`${API_URL}/jams/byId/${inv.jamId}`),
           ]);
 
           if (!senderRes.ok || !jamRes.ok) {
@@ -73,7 +70,7 @@ export function useUserInvitations() {
     if (!authUser) return false;
 
     try {
-      const res = await fetch(`http://localhost:8080/jams/${jamId}/addPlayer`, {
+      const res = await fetch(`${API_URL}/jams/${jamId}/addPlayer`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -93,7 +90,7 @@ export function useUserInvitations() {
 
   const rechazarInvitacion = async (invId: string): Promise<boolean> => {
     try {
-      const res = await fetch(`http://localhost:8080/invitations/${invId}`, {
+      const res = await fetch(`${API_URL}/invitations/${invId}`, {
         method: "DELETE",
       });
 

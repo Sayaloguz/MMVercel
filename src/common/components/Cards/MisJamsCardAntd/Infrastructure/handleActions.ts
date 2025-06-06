@@ -1,8 +1,9 @@
 // handleActions.ts
 import { Jam, JamUpdateDTO } from "@/common/types/utility";
+import { API_URL } from "@/common/utils/config";
 
 export const deleteJam = async (jamId: string): Promise<void> => {
-  const res = await fetch(`http://localhost:8080/jams/delete/${jamId}`, {
+  const res = await fetch(`${API_URL}/jams/delete/${jamId}`, {
     method: "DELETE",
     credentials: "include",
   });
@@ -17,13 +18,10 @@ export const expelPlayer = async (
   jamId: string,
   playerId: string
 ): Promise<Jam> => {
-  const res = await fetch(
-    `http://localhost:8080/jams/${jamId}/removePlayer/${playerId}`,
-    {
-      method: "DELETE",
-      credentials: "include",
-    }
-  );
+  const res = await fetch(`${API_URL}/jams/${jamId}/removePlayer/${playerId}`, {
+    method: "DELETE",
+    credentials: "include",
+  });
 
   if (!res.ok) {
     const errorText = await res.text();
@@ -37,13 +35,10 @@ export const leaveJam = async (
   jamId: string,
   playerId: string
 ): Promise<Jam | null> => {
-  const res = await fetch(
-    `http://localhost:8080/jams/${jamId}/removePlayer/${playerId}`,
-    {
-      method: "DELETE",
-      credentials: "include",
-    }
-  );
+  const res = await fetch(`${API_URL}/jams/${jamId}/removePlayer/${playerId}`, {
+    method: "DELETE",
+    credentials: "include",
+  });
 
   if (res.status === 204) return null;
 
@@ -71,7 +66,7 @@ export const updateJam = async (
     duration: jamData.duration,
   };
 
-  const res = await fetch(`http://localhost:8080/jams/modify`, {
+  const res = await fetch(`${API_URL}/jams/modify`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",

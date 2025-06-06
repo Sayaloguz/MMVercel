@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { Modal, Select, Spin, Empty } from "antd";
 import { Jam, User } from "@/common/types/utility";
 import { toast } from "react-toastify";
+import { API_URL } from "@/common/utils/config";
 
 const { Option } = Select;
 
@@ -31,7 +32,7 @@ export default function InviteUserModal({
     const fetchUsers = async () => {
       setLoadingUsers(true);
       try {
-        const res = await fetch("http://localhost:8080/users/");
+        const res = await fetch(`${API_URL}/users/`);
         if (!res.ok) throw new Error("Error cargando usuarios");
         const dataRaw: User[] = await res.json();
 
@@ -75,7 +76,7 @@ export default function InviteUserModal({
 
     setSendingInvitation(true);
     try {
-      const res = await fetch("http://localhost:8080/invitations/", {
+      const res = await fetch(`${API_URL}/invitations/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

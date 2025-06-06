@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useAuth } from "@/common/hooks/useAuth";
 import logout from "@/common/components/NavigationElements/UserNavAvatar/Infrastructure/sessionFunctions";
 import { toast } from "react-toastify";
+import { API_URL } from "@/common/utils/config";
 
 interface PerfilActionsProps {
   steamId: string;
@@ -20,7 +21,7 @@ const PerfilActions = ({ steamId }: PerfilActionsProps) => {
 
   const handleActualizar = async () => {
     try {
-      const res = await fetch(`http://localhost:8080/users/${steamId}`, {
+      const res = await fetch(`${API_URL}/users/${steamId}`, {
         method: "PUT",
       });
       if (!res.ok) throw new Error();
@@ -33,7 +34,7 @@ const PerfilActions = ({ steamId }: PerfilActionsProps) => {
   const handleBorrar = async () => {
     setLoading(true);
     try {
-      const res = await fetch(`http://localhost:8080/users/${steamId}`, {
+      const res = await fetch(`${API_URL}/users/${steamId}`, {
         method: "DELETE",
       });
       if (!res.ok) throw new Error();

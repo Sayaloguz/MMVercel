@@ -3,6 +3,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { User } from "../types/utility";
 import { useAuth } from "./useAuth";
+import { API_URL } from "@/common/utils/config";
 
 export function useUserProfile(steamIdFromUrl?: string) {
   const { user: authUser, loading: authLoading, error: authError } = useAuth();
@@ -17,9 +18,7 @@ export function useUserProfile(steamIdFromUrl?: string) {
     setError(null);
 
     try {
-      const res = await fetch(
-        `http://localhost:8080/users/byId/mongo/${steamId}`
-      );
+      const res = await fetch(`${API_URL}/users/byId/mongo/${steamId}`);
 
       if (res.status === 404) {
         throw new Error(

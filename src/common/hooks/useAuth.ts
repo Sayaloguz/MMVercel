@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { User } from "../types/utility";
+import { API_URL } from "@/common/utils/config";
 
 export function useAuth() {
   const [user, setUser] = useState<User | null>(null);
@@ -15,7 +16,7 @@ export function useAuth() {
       setLoading(true);
       setError(null);
       try {
-        const res = await fetch("http://localhost:8080/auth/me", {
+        const res = await fetch(`${API_URL}/auth/me`, {
           credentials: "include",
         });
 

@@ -5,6 +5,7 @@ import { Tabs, Spin } from "antd";
 import { Jam } from "@/common/types/utility";
 import MisJamList from "@/common/components/MisJamList";
 import { useAuth } from "@/common/hooks/useAuth";
+import { API_URL } from "@/common/utils/config";
 
 const MisJamTabs = () => {
   const { user, loading: authLoading, error: authError } = useAuth();
@@ -20,8 +21,8 @@ const MisJamTabs = () => {
     setLoading(true);
     try {
       const [createdRes, joinedRes] = await Promise.all([
-        fetch(`http://localhost:8080/jams/byCreator/${user.steamId}`),
-        fetch(`http://localhost:8080/jams/byUser/${user.steamId}`),
+        fetch(`${API_URL}/jams/byCreator/${user.steamId}`),
+        fetch(`${API_URL}/jams/byUser/${user.steamId}`),
       ]);
 
       const created = createdRes.ok ? await createdRes.json() : [];
