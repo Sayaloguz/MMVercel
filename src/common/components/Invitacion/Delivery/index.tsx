@@ -13,7 +13,7 @@ interface InvitacionProps {
   invitation: FullInvitation;
   onAceptar: () => Promise<boolean>;
   onRechazar: () => Promise<boolean>;
-  onRemove: () => void; // callback para avisar que hay que eliminar la invitación del listado padre
+  onRemove: () => void;
 }
 
 const Invitacion: FC<InvitacionProps> = ({

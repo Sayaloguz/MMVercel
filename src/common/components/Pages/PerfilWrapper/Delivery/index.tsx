@@ -1,12 +1,12 @@
-import React, { Suspense } from "react";
-import PerfilPage from "./PerfilContent";
+"use client";
 
-export default function PerfilPageWrapper() {
+import { Suspense } from "react";
+import PerfilContent from "../../PerfilContent/Delivery";
+
+export default function PerfilWrapper() {
   return (
-    <Suspense
-      fallback={<div className="mt-12 text-center">Cargando perfil...</div>}
-    >
-      <PerfilPage />
+    <Suspense>
+      <PerfilContent />
     </Suspense>
   );
 }
