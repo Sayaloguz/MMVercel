@@ -51,7 +51,7 @@ const GeneralJamList: FC = () => {
       if (!res.ok) throw new Error(await res.text());
 
       const updatedJam = await res.json();
-      updateJamInList(updatedJam);
+      updateJamInList(updatedJam.data);
 
       toast.success(
         userIsInJam

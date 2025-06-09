@@ -92,6 +92,7 @@ const FormCrearJam = () => {
 
       await response.json();
       toast.success("Jam creada con éxito 🎉");
+      window.scrollTo({ top: 0, behavior: "smooth" });
       form.resetFields();
     } catch (error) {
       toast.error("Error al crear la jam.");
@@ -129,6 +130,7 @@ const FormCrearJam = () => {
         <Input
           placeholder="Grupo para raidear Exodia, Fall Guys de tranquis..."
           className="custom-input text-left"
+          maxLength={40}
         />
       </Form.Item>
 
@@ -168,7 +170,7 @@ const FormCrearJam = () => {
       </Form.Item>
 
       <Form.Item name="desc" label="Descripción">
-        <TextArea showCount rows={4} maxLength={300} className="custom-input" />
+        <TextArea showCount rows={4} maxLength={150} className="custom-input" />
       </Form.Item>
 
       <div className="flex gap-4">

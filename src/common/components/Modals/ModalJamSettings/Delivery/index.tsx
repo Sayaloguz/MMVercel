@@ -107,7 +107,7 @@ const ModalJam: React.FC<ModalJamProps> = ({
           label="Título"
           rules={[{ required: true, message: "El título es requerido" }]}
         >
-          <Input placeholder="Título de la Jam" maxLength={100} />
+          <Input placeholder="Título de la Jam" maxLength={40} />
         </Form.Item>
 
         <Form.Item
@@ -118,7 +118,7 @@ const ModalJam: React.FC<ModalJamProps> = ({
           <TextArea
             rows={4}
             placeholder="Describe tu Jam..."
-            maxLength={500}
+            maxLength={150}
             showCount
           />
         </Form.Item>
