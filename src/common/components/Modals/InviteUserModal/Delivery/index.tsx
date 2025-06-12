@@ -43,7 +43,9 @@ export default function InviteUserModal({
             name: u.name,
             avatar: u.avatar,
           }))
-          .filter((u) => u.id !== currentUserId && u.id !== jam.createdBy.id);
+          .filter(
+            (u) => u.id !== currentUserId && u.id !== jam.createdBy.steamId
+          );
 
         setAllUsers(mappedUsers);
       } catch {
