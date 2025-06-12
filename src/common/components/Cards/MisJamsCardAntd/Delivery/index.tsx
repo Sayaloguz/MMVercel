@@ -103,7 +103,9 @@ const MisJamCardAntd: FC<MisJamCardAntdProps> = ({ jam, onActionComplete }) => {
 
           <div className="border-b border-gray-300 my-2" />
 
-          <h2 className="text-md font-semibold mb-2">{jam.title}</h2>
+          <h2 className="text-md font-semibold mb-2 nonshadowed">
+            {jam.title}
+          </h2>
           <p className="text-gray-600">{description}</p>
 
           <div className="border-b border-gray-300 my-2" />

@@ -56,7 +56,7 @@ const GeneralJamCard: FC<GeneralJamCardProps> = ({
 
       <div className="flex-1 p-5 flex flex-col justify-between">
         <div>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-2">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-2 nonshadowed">
             {jam.title}
           </h2>
 

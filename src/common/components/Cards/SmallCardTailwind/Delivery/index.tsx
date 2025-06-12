@@ -53,7 +53,7 @@ const SmallCardTailwind: FC<SmallCardAntdProps> = ({
       >
         <div className="flex flex-col gap-4">
           <img src={src} alt={alt} className="rounded-md w-full" />
-          <h2 className="text-lg font-semibold">{game}</h2>
+          <h2 className="text-lg font-semibold nonshadowed">{game}</h2>
           <p className="text-gray-700">{desc}</p>
           <div className="text-center text-sm text-gray-400">
             Navega por otras jams para más información.

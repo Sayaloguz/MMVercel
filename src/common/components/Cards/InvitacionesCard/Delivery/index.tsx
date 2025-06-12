@@ -22,7 +22,7 @@ export default function InvitacionesCard() {
 
   if (cargando) {
     return (
-      <div className="w-full max-w-3xl mx-auto mt-12">
+      <div className="w-full max-w-3xl mx-auto mt-12 flex justify-center items-center min-h-[200px]">
         <Spin size="large" />
       </div>
     );
