@@ -103,12 +103,14 @@ const MisJamCardAntd: FC<MisJamCardAntdProps> = ({ jam, onActionComplete }) => {
                 <ClockCircleOutlined className="text-[14px]" />
                 <span>{jam.jamTime}</span>
               </div>
-              <div className="flex items-center gap-1 font-bold">
-                <UserOutlined className="text-[14px]" />
-                <span>
-                  {jam.players.length}/{jam.maxPlayers}
-                </span>
-              </div>
+              {!isOwner && (
+                <div className="flex items-center gap-1 font-bold">
+                  <UserOutlined className="text-[14px]" />
+                  <span>
+                    {jam.players.length}/{jam.maxPlayers}
+                  </span>
+                </div>
+              )}
             </div>
           </div>
 
