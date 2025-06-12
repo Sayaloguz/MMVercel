@@ -75,7 +75,7 @@ const GeneralJamList: FC = () => {
   if (error || jams.length === 0) {
     return (
       <>
-        <Text className="block text-center">
+        <Text className="block text-center text-white">
           {error || "No hay jams disponibles."}
         </Text>
       </>

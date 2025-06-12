@@ -43,7 +43,7 @@ export default function InviteUserModal({
             name: u.name,
             avatar: u.avatar,
           }))
-          .filter((u) => u.id !== currentUserId);
+          .filter((u) => u.id !== currentUserId && u.id !== jam.createdBy.id);
 
         setAllUsers(mappedUsers);
       } catch {
@@ -54,7 +54,7 @@ export default function InviteUserModal({
     };
 
     fetchUsers();
-  }, [currentUserId]);
+  }, [currentUserId, jam.createdBy.id]);
 
   // Filtro dinámico
   useEffect(() => {

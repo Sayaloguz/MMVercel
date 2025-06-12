@@ -8,6 +8,7 @@ import {
   languageMap,
   voiceModeMap,
 } from "@/common/utils/mappers";
+import Link from "next/link";
 
 interface InvitacionProps {
   invitation: FullInvitation;
@@ -82,8 +83,15 @@ const Invitacion: FC<InvitacionProps> = ({
 
       <div className="flex-1 text-white w-full">
         <p className="text-sm sm:text-base">
-          <span className="text-red font-semibold">{sender.name}</span> te ha
-          invitado el{" "}
+          <span className="text-red font-semibold">
+            <Link
+              href="/perfil?id=${sender.steamId}"
+              className="hover:underline"
+            >
+              {sender.name}
+            </Link>
+          </span>{" "}
+          te ha invitado el{" "}
           <span className="text-red-300 font-semibold">{fechaFormateada}</span>{" "}
           a unirte a la Jam{" "}
           <span className="text-red-300 font-semibold">{jam.title}</span> para

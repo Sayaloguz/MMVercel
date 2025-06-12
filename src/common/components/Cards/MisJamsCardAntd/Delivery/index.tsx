@@ -5,6 +5,7 @@ import {
   SettingOutlined,
   CalendarOutlined,
   ClockCircleOutlined,
+  UserOutlined,
 } from "@ant-design/icons";
 import { UserGroupIcon } from "@/common/components/CustomIcons";
 import ModalJam from "../../../Modals/ModalJamSettings/Delivery";
@@ -84,7 +85,11 @@ const MisJamCardAntd: FC<MisJamCardAntdProps> = ({ jam, onActionComplete }) => {
               <Link href={`/perfil?id=${createdBy.steamId}`}>
                 <div className="flex items-center gap-2 text-gray-900 hover:underline hover:text-red-600 cursor-pointer">
                   <Avatar src={createdBy.avatar} />
-                  <span>{createdBy.name || "Creador"}</span>
+                  <span>
+                    {(createdBy.name || "Creador").length > 18
+                      ? (createdBy.name || "Creador").slice(0, 15) + "..."
+                      : createdBy.name || "Creador"}
+                  </span>
                 </div>
               </Link>
             )}
@@ -97,6 +102,12 @@ const MisJamCardAntd: FC<MisJamCardAntdProps> = ({ jam, onActionComplete }) => {
               <div className="flex items-center gap-1 font-bold">
                 <ClockCircleOutlined className="text-[14px]" />
                 <span>{jam.jamTime}</span>
+              </div>
+              <div className="flex items-center gap-1 font-bold">
+                <UserOutlined className="text-[14px]" />
+                <span>
+                  {jam.players.length}/{jam.maxPlayers}
+                </span>
               </div>
             </div>
           </div>
