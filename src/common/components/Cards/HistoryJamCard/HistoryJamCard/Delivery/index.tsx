@@ -44,7 +44,7 @@ const HistoryJamCard: FC<HistoryJamCardProps> = ({ jam }) => {
 
       {/* Contenido card*/}
       <div className="p-4 flex flex-col justify-between h-full">
-        <h2 className="text-lg font-semibold text-gray-900 mb-2 nonshadowed">
+        <h2 className="text-lg font-semibold text-gray-900 mb-2">
           {jam.title}
         </h2>
 

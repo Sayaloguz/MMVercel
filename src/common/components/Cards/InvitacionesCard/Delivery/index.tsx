@@ -3,6 +3,7 @@ import Invitacion from "@/common/components/Invitacion/Delivery";
 import { toast } from "react-toastify";
 import { useUserInvitations } from "@/common/hooks/useUserInvitations";
 import { MailOutlined } from "@ant-design/icons";
+import { Spin } from "antd";
 
 export default function InvitacionesCard() {
   const {
@@ -22,7 +23,7 @@ export default function InvitacionesCard() {
   if (cargando) {
     return (
       <div className="w-full max-w-3xl mx-auto mt-12">
-        {/* Skeleton aquí */}
+        <Spin size="large" />
       </div>
     );
   }
@@ -74,7 +75,7 @@ export default function InvitacionesCard() {
   };
 
   return (
-    <div className="mb-5 bg-[#1c2331] text-white rounded-2xl shadow-xl border border-gray-700 w-full max-w-3xl mx-auto p-6 sm:p-8 px-4 sm:px-8 transition-all duration-300 flex flex-col justify-between">
+    <div className="mb-5 bg-[#1c2331] text-white rounded-2xl shadow-xl border border-gray-700 w-full max-w-4xl mx-auto p-6 sm:p-8 px-4 sm:px-8 transition-all duration-300 flex flex-col justify-between">
       <div className="flex flex-col sm:flex-row sm:items-start gap-6">
         <h2 className="text-base sm:text-xl md:text-2xl font-bold flex items-center gap-2 mb-1">
           <MailOutlined className="shadowed-element" />

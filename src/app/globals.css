@@ -59,34 +59,16 @@
   border-bottom: 1px solid #e4e4e4;
 }
 
-/*
-.custom-modal .ant-form-item-label > label {
-	color: #333 !important;
-}*/
-
 h1 {
   padding: 5px;
   margin-top: 30px;
   margin-bottom: 40px;
 }
 
-/*
-h1 {
-  text-shadow: 2px 2px 1px rgba(2, 2, 4, 1);
-}
-
-h2:not(.nonshadowed) {
-  text-shadow: 2px 2px 1px rgba(2, 2, 4, 1);
-}
-
-
-
 .shadowed {
   filter: drop-shadow(2px 2px 1px rgba(2, 2, 4, 1));
 }
-  */
-
-h1 {
+*/ h1 {
   text-shadow: -3px -3px 0 #000, 3px -3px 0 #000, -3px 3px 0 #000,
     3px 3px 0 #000, 0 -3px 0 #000, 0 3px 0 #000, -3px 0 0 #000, 3px 0 0 #000;
 }
@@ -94,11 +76,6 @@ h1 {
 .shadowed {
   filter: drop-shadow(2px 2px 0 rgba(2, 2, 4, 1))
     drop-shadow(-2px -2px 0 rgba(2, 2, 4, 1));
-}
-
-h2:not(.nonshadowed) {
-  text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000,
-    2px 2px 0 #000, 0 -2px 0 #000, 0 2px 0 #000, -2px 0 0 #000, 2px 0 0 #000;
 }
 
 h1,
@@ -160,12 +137,10 @@ footer {
   border-radius: 10px;
 }
 
-/* Negrita para label de Form.Item */
 .ant-form-item-label > label {
   font-weight: 600;
 }
 
-/* Negrita para el asterisco rojo */
 .ant-form-item-required-mark {
   font-weight: 600 !important;
 }
