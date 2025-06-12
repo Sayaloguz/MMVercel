@@ -85,7 +85,7 @@ const Invitacion: FC<InvitacionProps> = ({
         <p className="text-sm sm:text-base">
           <span className="text-red font-semibold">
             <Link
-              href="/perfil?id=${sender.steamId}"
+              href={`/perfil?id=${sender.steamId}`}
               className="hover:underline"
             >
               {sender.name}
