@@ -1,4 +1,3 @@
-// hooks/useFilteredJams.ts
 "use client";
 
 import { useEffect, useState } from "react";
@@ -14,6 +13,7 @@ export default function useFilteredJams() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  // Efecto para cargar las jams filtradas por título o estado
   useEffect(() => {
     const fetchJams = async () => {
       setLoading(true);

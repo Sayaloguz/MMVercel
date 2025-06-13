@@ -10,6 +10,7 @@ type ConfirmDeleteJamModalProps = {
   loading: boolean;
 };
 
+// Componente para confirmar la eliminación de una Jam
 export default function ConfirmDeleteJamModal({
   isVisible,
   onCancel,

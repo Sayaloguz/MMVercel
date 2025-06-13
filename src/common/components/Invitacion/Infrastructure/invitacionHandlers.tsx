@@ -1,5 +1,7 @@
 import { toast } from "react-toastify";
 
+// Funciones para manejar la aceptación y rechazo de invitaciones
+// Refactorizar en un futuro para hacer mejor uso de estas
 export const handleAceptar = async (
   jamId: string,
   invId: string,

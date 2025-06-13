@@ -31,6 +31,7 @@ interface ModalJamProps {
 
 const { TextArea } = Input;
 
+// Componente para editar los detalles de una Jam
 const ModalJam: React.FC<ModalJamProps> = ({
   isVisible,
   onCancel,

@@ -12,6 +12,7 @@ export function useAuth() {
   const router = useRouter();
   const pathname = usePathname();
 
+  // Efecto para obtener el usuario autenticado
   useEffect(() => {
     const fetchAuthUser = async () => {
       setLoading(true);
@@ -21,10 +22,12 @@ export function useAuth() {
           credentials: "include",
         });
 
+        // Redirección si el usuario no está autenticado
         if (!res.ok) {
           console.log(
             "Token inválido, sesión expirada o usuario no autenticado"
           );
+
           if (pathname !== "/jams") {
             router.replace("/");
           }

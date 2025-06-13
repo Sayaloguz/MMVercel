@@ -3,6 +3,7 @@ import { DeleteOutlined } from "@ant-design/icons";
 import ConfirmModalAntd from "@/common/components/Modals/ConfirmModalAntd/Delivery";
 import { ConfirmExpelModalProps } from "./interface";
 
+// Componente para confirmar la expulsión de un jugador
 const ConfirmExpelModal: FC<ConfirmExpelModalProps> = ({
   visible,
   loading,

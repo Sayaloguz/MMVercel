@@ -10,6 +10,7 @@ type ConfirmExpelPlayerModalProps = {
   loading: boolean;
 };
 
+// Componente para confirmar la expulsión de un jugador
 export default function ConfirmExpelPlayerModal({
   playerSteamId,
   onCancel,

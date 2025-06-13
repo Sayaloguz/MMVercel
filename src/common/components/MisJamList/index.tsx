@@ -10,6 +10,7 @@ interface MisJamListProps {
   editable?: boolean;
 }
 
+// Componente para mostrar una lista de jams del usuario
 const MisJamList: FC<MisJamListProps> = ({
   jams,
   refreshJams,

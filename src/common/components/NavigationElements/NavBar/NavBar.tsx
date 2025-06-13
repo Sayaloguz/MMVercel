@@ -18,6 +18,7 @@ import { useAuth } from "@/common/hooks/useAuth";
 
 const { Header } = Layout;
 
+// Elementos del menú de navegación
 const navItems = [
   {
     key: "jams",

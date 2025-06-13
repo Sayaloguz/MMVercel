@@ -10,6 +10,7 @@ import {
 import { PerfilCardAntdProps } from "./interface";
 import PerfilActions from "./Infrastructure/perfilActions";
 
+// Componente de tarjeta de perfil
 const PerfilCardAntd: FC<PerfilCardAntdProps> = ({ user, profileUrl }) => {
   const steamProfileUrl =
     profileUrl ?? `https://steamcommunity.com/profiles/${user.steamId}`;

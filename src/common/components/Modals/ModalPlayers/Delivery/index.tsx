@@ -14,6 +14,7 @@ type ModalPlayersProps = {
   onOpenInviteModal: () => void;
 };
 
+// Componente para mostrar la lista de jugadores en una Jam
 export default function ModalPlayers({
   isVisible,
   onClose,

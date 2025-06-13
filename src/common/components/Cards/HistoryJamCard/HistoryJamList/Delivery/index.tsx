@@ -4,6 +4,7 @@ import { Jam, User } from "@/common/types/utility";
 import HistoryJamCard from "../../HistoryJamCard/Delivery";
 import { API_URL } from "@/common/utils/config";
 
+// Componente para mostrar la lista de jams en las que el usuario ha participado
 const HistoryJamList = () => {
   const [user, setUser] = useState<User | null>(null);
   const [jams, setJams] = useState<Jam[]>([]);
@@ -22,6 +23,7 @@ const HistoryJamList = () => {
         if (!res.ok) throw new Error("Error al obtener jams");
 
         const allJams: Jam[] = await res.json();
+        // Creo que esta parte ya no es necesaria
         const mappedJams = allJams.map((jam) => ({
           ...jam,
           players: jam.players,

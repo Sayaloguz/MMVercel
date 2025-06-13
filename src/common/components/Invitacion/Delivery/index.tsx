@@ -17,6 +17,7 @@ interface InvitacionProps {
   onRemove: () => void;
 }
 
+// Componente de invitación a una Jam
 const Invitacion: FC<InvitacionProps> = ({
   invitation,
   onAceptar,
@@ -34,6 +35,7 @@ const Invitacion: FC<InvitacionProps> = ({
 
   const fechaFormateada = dayjs(sentDate).format("DD/MM/YYYY [a las] HH:mm");
 
+  // Manejadores de eventos para aceptar y rechazar la invitación
   const handleAceptarClick = async () => {
     if (loading) return;
     setLoading(true);

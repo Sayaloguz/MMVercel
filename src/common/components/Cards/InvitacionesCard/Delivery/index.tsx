@@ -5,6 +5,7 @@ import { useUserInvitations } from "@/common/hooks/useUserInvitations";
 import { MailOutlined } from "@ant-design/icons";
 import { Spin } from "antd";
 
+// Componente para mostrar las invitaciones pendientes del usuario
 export default function InvitacionesCard() {
   const {
     invitaciones: invitacionesBackend,

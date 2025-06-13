@@ -15,6 +15,7 @@ type InviteUserModalProps = {
   onInvitationSent?: () => void;
 };
 
+// Modal para invitar a un usuario a una Jam
 export default function InviteUserModal({
   jam,
   currentUserId,
@@ -44,7 +45,7 @@ export default function InviteUserModal({
             avatar: u.avatar,
           }))
           .filter(
-            (u) => u.id !== currentUserId && u.id !== jam.createdBy.steamId
+            (u) => u.id !== currentUserId && u.id !== jam.createdBy.steamId // Excluir al usuario actual y al creador de la jam
           );
 
         setAllUsers(mappedUsers);

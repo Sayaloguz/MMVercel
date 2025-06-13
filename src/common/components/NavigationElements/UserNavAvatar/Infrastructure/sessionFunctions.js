@@ -1,6 +1,7 @@
 import { message } from "antd";
 import { API_URL } from "@/common/utils/config";
 
+// Función para cerrar sesión
 const logout = async () => {
   try {
     const res = await fetch(`${API_URL}/auth/logout`, {

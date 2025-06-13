@@ -28,6 +28,7 @@ import {
 } from "@/common/utils/mappers";
 import ConfirmDeleteJamModal from "@/common/components/Modals/ConfirmDeleteModal/Delivery";
 
+// Componente para mostrar una tarjeta de Jam con Ant Design
 const MisJamCardAntd: FC<MisJamCardAntdProps> = ({ jam, onActionComplete }) => {
   const [isEditModalVisible, setIsEditModalVisible] = useState(false);
   const [isConfirmDeleteVisible, setIsConfirmDeleteVisible] = useState(false);

@@ -8,6 +8,7 @@ export function useOpenJams() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  // Efecto para cargar las jams abiertas
   useEffect(() => {
     const fetchOpenJams = async () => {
       try {

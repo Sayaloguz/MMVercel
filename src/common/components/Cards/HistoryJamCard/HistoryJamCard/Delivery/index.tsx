@@ -18,6 +18,7 @@ import {
   voiceModeMap,
 } from "@/common/utils/mappers";
 
+// Componente de tarjeta de jam del historial
 const HistoryJamCard: FC<HistoryJamCardProps> = ({ jam }) => {
   return (
     <div className="flex flex-col bg-white rounded-2xl shadow-md overflow-hidden w-full max-w-sm border-1 border-grey-700">
@@ -86,6 +87,7 @@ const HistoryJamCard: FC<HistoryJamCardProps> = ({ jam }) => {
               title={
                 <div className="max-h-60 overflow-y-auto">
                   {" "}
+                  {/* Lista de jugadores */}
                   {jam.players.map((player) => (
                     <div
                       key={player.steamId}

@@ -2,6 +2,7 @@ import { Modal } from "antd";
 import { FC } from "react";
 import { ConfirmModalAntdProps } from "./interface";
 
+// Componente de modal de confirmación personalizado utilizando Ant Design
 const ConfirmModalAntd: FC<ConfirmModalAntdProps> = ({
   title,
   icon,

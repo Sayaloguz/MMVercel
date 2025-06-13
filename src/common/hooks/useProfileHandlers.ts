@@ -3,6 +3,7 @@
 import { toast } from "react-toastify";
 import { API_URL } from "@/common/utils/config";
 
+// Función para actualizar los datos del usuario
 export const actualizarDatos = async (steamId: string, refetch: () => void) => {
   try {
     const res = await fetch(`${API_URL}/users/${steamId}`, {
@@ -18,6 +19,7 @@ export const actualizarDatos = async (steamId: string, refetch: () => void) => {
   }
 };
 
+// Función para borrar la cuenta de usuario
 export const borrarCuenta = async (
   steamId: string,
   onSuccess: () => void,

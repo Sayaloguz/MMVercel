@@ -5,6 +5,11 @@ import { User } from "../types/utility";
 import { useAuth } from "./useAuth";
 import { API_URL } from "@/common/utils/config";
 
+/**
+ * Hook para obtener el perfil de usuario basado en la ID de Steam.
+ * Si no se proporciona una ID, intenta usar la del usuario autenticado.
+ * Redirige a la página de perfil propia si no hay ID en la URL.
+ */
 export function useUserProfile(steamIdFromUrl?: string) {
   const { user: authUser, loading: authLoading, error: authError } = useAuth();
   const router = useRouter();

@@ -7,6 +7,7 @@ import MisJamList from "@/common/components/MisJamList";
 import { useAuth } from "@/common/hooks/useAuth";
 import { API_URL } from "@/common/utils/config";
 
+// Componente MisJamTabs que muestra las jams en las que participa y ha creado un usuario
 const MisJamTabs = () => {
   const { user, loading: authLoading, error: authError } = useAuth();
 
@@ -47,6 +48,7 @@ const MisJamTabs = () => {
     }
   };
 
+  // Efecto para cargar las jams al montar el componente o cuando cambia el usuario
   useEffect(() => {
     if (!authLoading && user?.steamId && !hasFetched) {
       refreshJams();

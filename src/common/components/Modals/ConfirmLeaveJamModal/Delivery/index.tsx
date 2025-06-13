@@ -10,6 +10,7 @@ type ConfirmLeaveJamModalProps = {
   loading: boolean;
 };
 
+// Componente para confirmar la salida de una Jam
 export default function ConfirmLeaveJamModal({
   isVisible,
   onCancel,

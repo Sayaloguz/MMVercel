@@ -11,6 +11,7 @@ interface PerfilActionsProps {
   steamId: string;
 }
 
+// Componente para acciones del perfil del usuario
 const PerfilActions = ({ steamId }: PerfilActionsProps) => {
   const { user: authUser } = useAuth();
   const [modalVisible, setModalVisible] = useState(false);

@@ -11,6 +11,7 @@ interface JamCardData {
   desc: string;
 }
 
+// Hook para obtener las últimas 5 jams activas
 export function useLatestJams() {
   const [jams, setJams] = useState<JamCardData[]>([]);
   const [loading, setLoading] = useState(true);

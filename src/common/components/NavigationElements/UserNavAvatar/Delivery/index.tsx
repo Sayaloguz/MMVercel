@@ -8,6 +8,7 @@ import ConfirmModalAntd from "@/common/components/Modals/ConfirmModalAntd/Delive
 import logout from "../Infrastructure/sessionFunctions";
 import { UserNavAvatarProps } from "./interface";
 
+// Componente para mostrar el avatar del usuario en la navegación
 const UserNavAvatar: FC<UserNavAvatarProps> = ({ user }) => {
   const [isConfirmVisible, setIsConfirmVisible] = useState(false);
 

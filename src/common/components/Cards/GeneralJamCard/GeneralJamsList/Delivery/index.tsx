@@ -34,6 +34,7 @@ const GeneralJamList: FC = () => {
       (p: User) => p.steamId === currentUser.steamId
     );
 
+    // Si el usuario ya está en la Jam, lo eliminamos; si no, lo añadimos.
     try {
       const endpoint = userIsInJam
         ? `removePlayer/${currentUser.steamId}`
@@ -64,6 +65,7 @@ const GeneralJamList: FC = () => {
     }
   };
 
+  // Si aún se está cargando la autenticación o las jams, mostramos un spinner.
   if (authLoading || loading) {
     return (
       <>

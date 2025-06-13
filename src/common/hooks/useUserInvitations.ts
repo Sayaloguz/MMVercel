@@ -108,6 +108,6 @@ export function useUserInvitations() {
     refetch: fetchInvitaciones,
     aceptarInvitacion,
     rechazarInvitacion,
-    setInvitaciones, // <-- agregado aquí
+    setInvitaciones,
   };
 }
