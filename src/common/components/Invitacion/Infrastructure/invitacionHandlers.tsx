@@ -22,7 +22,7 @@ export const handleAceptar = async (
     }
 
     toast.success("¡Te has unido a la partida!");
-    onChange?.(); // Refresca invitaciones sin recargar toda la página
+    onChange?.();
   } catch (error) {
     console.error("Error en handleAceptar:", error);
     toast.error("Error inesperado al aceptar la invitación.");

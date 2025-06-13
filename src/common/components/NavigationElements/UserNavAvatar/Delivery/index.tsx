@@ -22,7 +22,6 @@ const UserNavAvatar: FC<UserNavAvatarProps> = ({ user }) => {
 
   return (
     <div className="flex items-center gap-3">
-      {/* Modal de confirmación */}
       <ConfirmModalAntd
         title="¿Cerrar sesión?"
         icon={<PoweroffOutlined className="text-4xl" />}

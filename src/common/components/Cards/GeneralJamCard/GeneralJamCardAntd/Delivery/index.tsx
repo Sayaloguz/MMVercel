@@ -116,7 +116,7 @@ const GeneralJamCard: FC<GeneralJamCardProps> = ({
                 jwtValid
                   ? userIsInJam
                     ? "bg-gray-950 text-white hover:bg-gray-700 cursor-pointer"
-                    : "bg-red-700 text-white hover:bg-red-500 cursor-pointer"
+                    : "bg-[#ef4444] text-white hover:bg-[#ef4444]/70 cursor-pointer"
                   : "bg-gray-300 text-gray-600 cursor-not-allowed"
               }`}
             >

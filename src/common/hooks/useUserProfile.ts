@@ -57,7 +57,7 @@ export function useUserProfile(steamIdFromUrl?: string) {
       return;
     }
 
-    // Si no hay steamId en URL pero sí usuario autenticado, redirigir
+    // Si no hay steamId en URL pero sí usuario autenticado
     if (!steamIdFromUrl && authUser?.steamId) {
       router.replace(`/perfil?id=${authUser.steamId}`);
       return;

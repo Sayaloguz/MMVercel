@@ -17,34 +17,29 @@ const SmallCardTailwind: FC<SmallCardAntdProps> = ({
 
   return (
     <>
-      {/* Contenedor general */}
       <div
         className="relative group rounded-xl overflow-hidden shadow-lg transition-transform duration-300 hover:scale-105 cursor-pointer h-full bg-gray-900"
         onClick={() => setShowModal(true)}
       >
-        {/* Título flotante */}
         <div className="absolute top-2 left-2 z-10 max-w-[80%]">
           <span className="block px-3 py-1 text-sm font-semibold text-white backdrop-blur-sm bg-black/60 rounded-lg border border-white/10 leading-snug break-words line-clamp-2">
             {game}
           </span>
         </div>
 
-        {/* Imagen */}
         <img
           src={src}
           alt={alt}
           className="w-full h-48 object-cover sm:h-56 md:h-64"
         />
 
-        {/* Fondo inferior con botón estilizado */}
         <div className="absolute bottom-0 w-full bg-gradient-to-t from-black/70 to-transparent py-4 flex justify-center z-10">
-          <button className="px-4 py-2 text-white text-sm font-semibold border border-white/60 rounded-sm bg-black/40 backdrop-blur-sm hover:bg-red-600/60 transition">
+          <button className="px-4 py-2 text-white text-sm font-semibold border border-white/60 rounded-sm bg-black/40 backdrop-blur-sm hover:bg-[#ef4444]/60 transition">
             Más info
           </button>
         </div>
       </div>
 
-      {/* Modal */}
       <Modal
         open={showModal}
         onCancel={() => setShowModal(false)}

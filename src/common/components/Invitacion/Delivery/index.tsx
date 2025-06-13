@@ -155,7 +155,7 @@ const Invitacion: FC<InvitacionProps> = ({
           <div className="flex gap-3 flex-wrap justify-center sm:justify-end mt-2 sm:mt-0">
             <button
               type="button"
-              className="bg-black p-2 px-4 border-gray-500 border-2 rounded-xl hover:bg-red-900 transition min-w-[100px] "
+              className="bg-black p-2 px-4 border-gray-500 border-2 rounded-xl hover:bg-[#ef4444]/50 transition min-w-[100px] "
               onClick={handleRechazarClick}
               disabled={loading || isRemoving}
             >

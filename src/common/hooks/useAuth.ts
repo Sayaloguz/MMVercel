@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { User } from "../types/utility";
 import { API_URL } from "@/common/utils/config";
 
@@ -10,6 +10,7 @@ export function useAuth() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
     const fetchAuthUser = async () => {
@@ -21,9 +22,12 @@ export function useAuth() {
         });
 
         if (!res.ok) {
-          // Si el token es inválido, redirige
-          console.log("Token inválido o sesión expirada");
-          router.replace("/");
+          console.log(
+            "Token inválido, sesión expirada o usuario no autenticado"
+          );
+          if (pathname !== "/jams") {
+            router.replace("/");
+          }
           return;
         }
 
@@ -32,7 +36,9 @@ export function useAuth() {
       } catch (err) {
         setError(err instanceof Error ? err.message : "Error desconocido");
         setUser(null);
-        router.replace("/"); // Redirige también en errores de red
+        if (pathname !== "/jams") {
+          router.replace("/");
+        }
       } finally {
         setLoading(false);
       }
