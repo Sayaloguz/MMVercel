@@ -2,6 +2,7 @@
 import { FC, useState, useEffect } from "react";
 import { Modal } from "antd";
 import { SmallCardAntdProps } from "../../SmallCardAntd/Delivery/interface";
+import Link from "next/link";
 
 const SmallCardTailwind: FC<SmallCardAntdProps> = ({
   game,
@@ -51,7 +52,7 @@ const SmallCardTailwind: FC<SmallCardAntdProps> = ({
           <h2 className="text-lg font-semibold nonshadowed">{game}</h2>
           <p className="text-gray-700">{desc}</p>
           <div className="text-center text-sm text-gray-400">
-            Navega por otras jams para más información.
+            <Link href="/jams">Navega por Jams para más información.</Link>
           </div>
         </div>
       </Modal>
