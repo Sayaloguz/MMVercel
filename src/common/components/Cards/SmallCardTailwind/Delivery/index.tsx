@@ -52,7 +52,9 @@ const SmallCardTailwind: FC<SmallCardAntdProps> = ({
           <h2 className="text-lg font-semibold nonshadowed">{game}</h2>
           <p className="text-gray-700">{desc}</p>
           <div className="text-center text-sm text-gray-400">
-            <Link href="/jams">Navega por Jams para más información.</Link>
+            <Link className="text-red-600 hover:text-red-700" href="/jams">
+              Navega por Jams para más información.
+            </Link>
           </div>
         </div>
       </Modal>

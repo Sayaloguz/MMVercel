@@ -28,7 +28,7 @@ export function useAuth() {
             "Token inválido, sesión expirada o usuario no autenticado"
           );
 
-          if (pathname !== "/jams") {
+          if (pathname !== "/jams" && !pathname.includes("/perfil")) {
             router.replace("/");
           }
           return;
